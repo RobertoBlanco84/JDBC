@@ -1,4 +1,4 @@
-package com.jdbc.view;
+package com.jdbc.main;
 
 public class Main {
 
