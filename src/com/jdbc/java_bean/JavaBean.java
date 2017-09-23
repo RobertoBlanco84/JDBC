@@ -12,10 +12,10 @@ public class JavaBean {
 	private String keeperFirstName;
 	private String keeperLastName;
 	
-	private int ownerId;
-	private String ownerFirstName;
-	private String ownerLastName;
-	private int ownerPhoneNumber;
+	private String owner_id = "owner_id";
+	private String fname = "fname";
+	private String lname = "lname";
+	private String phone_number = "phone_number";
 	
 	public int getDogId() {
 		return dogId;
@@ -41,17 +41,17 @@ public class JavaBean {
 	public String getKeeperLastName() {
 		return keeperLastName;
 	}
-	public int getOwnerId() {
-		return ownerId;
+	public String getOwnerId() {
+		return owner_id;
 	}
 	public String getOwnerFirstName() {
-		return ownerFirstName;
+		return fname;
 	}
 	public String getOwnerLastName() {
-		return ownerLastName;
+		return lname;
 	}
-	public int getOwnerPhoneNumber() {
-		return ownerPhoneNumber;
+	public String getOwnerPhoneNumber() {
+		return phone_number;
 	}
 	
 }

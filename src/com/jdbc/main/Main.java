@@ -10,7 +10,8 @@ public class Main {
 		
 		Queries queries = new Queries();
 		try {
-		queries.insertIntoDog();
+		    queries.insertIntoNewOwner();
+			//queries.dogCount();
 		}
 		
 		catch(SQLException e) {
