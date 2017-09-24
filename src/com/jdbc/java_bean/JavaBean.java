@@ -2,22 +2,22 @@ package com.jdbc.java_bean;
 
 public class JavaBean {
 	
-	private int dogId;
-	private String dogName;
-	private String dogGender;
-	private String dogRace;
-	private int newDogOwner;
+	private String dogId = "dog_id";
+	private String dogName = "name";
+	private String dogGender = "gender";
+	private String dogRace = "race";
+	private String newDogOwner = "new_owner";
 	
-	private int keeperId;
+	private String keeperId = "keeper_id";
 	private String keeperFirstName;
 	private String keeperLastName;
 	
-	private String owner_id = "owner_id";
-	private String fname = "fname";
-	private String lname = "lname";
-	private String phone_number = "phone_number";
+	private String ownerId = "owner_id";
+	private String ownerFirstName = "fname";
+	private String ownerLastName = "lname";
+	private String phoneNumber = "phone_number";
 	
-	public int getDogId() {
+	public String getDogId() {
 		return dogId;
 	}
 	public String getDogName() {
@@ -29,10 +29,10 @@ public class JavaBean {
 	public String getDogRace() {
 		return dogRace;
 	}
-	public int getNewDogOwner() {
+	public String getNewDogOwner() {
 		return newDogOwner;
 	}
-	public int getKeeperId() {
+	public String getKeeperId() {
 		return keeperId;
 	}
 	public String getKeeperFirstName() {
@@ -42,16 +42,16 @@ public class JavaBean {
 		return keeperLastName;
 	}
 	public String getOwnerId() {
-		return owner_id;
+		return ownerId;
 	}
 	public String getOwnerFirstName() {
-		return fname;
+		return ownerFirstName;
 	}
 	public String getOwnerLastName() {
-		return lname;
+		return ownerLastName;
 	}
 	public String getOwnerPhoneNumber() {
-		return phone_number;
+		return phoneNumber;
 	}
 	
 }
