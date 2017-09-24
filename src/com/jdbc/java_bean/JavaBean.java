@@ -9,8 +9,8 @@ public class JavaBean {
 	private String newDogOwner = "new_owner";
 	
 	private String keeperId = "keeper_id";
-	private String keeperFirstName;
-	private String keeperLastName;
+	private String keeperFirstName = "lname";
+	private String keeperLastName = "fname";
 	
 	private String ownerId = "owner_id";
 	private String ownerFirstName = "fname";

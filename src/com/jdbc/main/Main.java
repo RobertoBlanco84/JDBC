@@ -10,12 +10,21 @@ public class Main {
 		
 		Queries queries = new Queries();
 		try {
-		    
-			queries.select();
-			//queries.insert();
-			//queries.dogCount();
+		    //Select Queries
+			queries.selectKeeper();
+			//queries.selectDog();
+			//queries.selectNewOwner();
+			
+			//Insert Queries
+			//queries.insertDog();
+			//queries.insertNewOwner();
+			//queries.insertKeeper();
+			
 			//queries.delete();
 			//queries.update();
+			
+			//Stored Procedure
+			//queries.dogCount();
 		}
 		
 		catch(SQLException e) {
