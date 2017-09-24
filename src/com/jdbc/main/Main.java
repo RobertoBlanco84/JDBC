@@ -11,10 +11,11 @@ public class Main {
 		Queries queries = new Queries();
 		try {
 		    
-			//queries.select();
-			queries.insert();
+			queries.select();
+			//queries.insert();
 			//queries.dogCount();
 			//queries.delete();
+			//queries.update();
 		}
 		
 		catch(SQLException e) {

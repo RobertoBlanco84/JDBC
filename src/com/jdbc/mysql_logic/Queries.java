@@ -65,7 +65,7 @@ public class Queries {
 		preparedStmt.setInt(4, 11223344);
 		preparedStmt.executeUpdate();
 
-		System.out.println("Inserted into New_owner table: ");
+		System.out.println("Inserted into 'New_owner' table: ");
 		String selectQuery = "SELECT "+ owner_id + "," +fname + ", "+ lname+ "," + phone_number+ " FROM New_owner";
 		preparedStmtSelect = connection.prepareStatement(selectQuery);
 		resultSet = preparedStmtSelect.executeQuery();
@@ -86,7 +86,21 @@ public class Queries {
 		String deleteQuery = "DELETE FROM New_owner WHERE "+ owner_id +" = ?";
 		preparedStatement = connection.prepareStatement(deleteQuery);
 		preparedStatement.setInt(1, 19);
-		preparedStatement.executeUpdate();
+		int rows = preparedStatement.executeUpdate();
+		System.out.println(rows+" row(s) deleted.");
+		
+	}
+	
+	public void update() throws SQLException {
+		Connection connection;
+		PreparedStatement preparedStatement;
+		connection = DriverManager.getConnection(url,user,password);
+		String updateQuery = "UPDATE New_owner SET lname=? WHERE owner_id=18";
+		preparedStatement = connection.prepareStatement(updateQuery);
+		preparedStatement.setString(1, "Troeng");
+		int rows = preparedStatement.executeUpdate();
+		System.out.println(rows + " row(s) updated.");
+		
 	}
 	
 	//Stored procedure
