@@ -2,23 +2,24 @@ package com.jdbc.java_bean;
 
 public class JavaBean {
 	
-	private String dogId = "dog_id";
+	private String keeper = "keeper";
 	private String dogName = "name";
 	private String dogGender = "gender";
 	private String dogRace = "race";
-	private String newDogOwner = "new_owner";
+	private String adoptionId = "adoption_id";
 	
 	private String keeperId = "keeper_id";
-	private String keeperFirstName = "lname";
-	private String keeperLastName = "fname";
+	private String keeperFirstName = "fname";
+	private String keeperLastName = "lname";
 	
 	private String ownerId = "owner_id";
 	private String ownerFirstName = "fname";
 	private String ownerLastName = "lname";
+	private String socialSecurityNumber = "ss_number";
 	private String phoneNumber = "phone_number";
 	
-	public String getDogId() {
-		return dogId;
+	public String getKeeper() {
+		return keeper;
 	}
 	public String getDogName() {
 		return dogName;
@@ -29,8 +30,8 @@ public class JavaBean {
 	public String getDogRace() {
 		return dogRace;
 	}
-	public String getNewDogOwner() {
-		return newDogOwner;
+	public String getAdoptionId() {
+		return adoptionId;
 	}
 	public String getKeeperId() {
 		return keeperId;
@@ -50,6 +51,11 @@ public class JavaBean {
 	public String getOwnerLastName() {
 		return ownerLastName;
 	}
+	
+	public String getSSNumber() {
+		return socialSecurityNumber;
+	}
+	
 	public String getOwnerPhoneNumber() {
 		return phoneNumber;
 	}

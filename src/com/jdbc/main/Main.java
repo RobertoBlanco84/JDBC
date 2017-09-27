@@ -2,31 +2,31 @@ package com.jdbc.main;
 
 import java.sql.SQLException;
 
-import com.jdbc.mysql_logic.Queries;
+import com.jdbc.connection.ConnectionHandler;
 
 public class Main {
 
 	public static void main(String[] args) {
-		
-		Queries queries = new Queries();
+
+		ConnectionHandler queries = new ConnectionHandler();
 		try {
-		    //Select Queries
-			queries.selectKeeper();
-			//queries.selectDog();
+			//Select Queries
+			//queries.selectKeeper();
+			queries.selectDog();
 			//queries.selectNewOwner();
-			
+
 			//Insert Queries
 			//queries.insertDog();
-			//queries.insertNewOwner();
 			//queries.insertKeeper();
-			
+			//queries.insertNewOwner();
+
 			//queries.delete();
 			//queries.update();
-			
+
 			//Stored Procedure
 			//queries.dogCount();
 		}
-		
+
 		catch(SQLException e) {
 			e.printStackTrace();
 		}
