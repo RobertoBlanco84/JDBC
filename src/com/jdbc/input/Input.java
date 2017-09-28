@@ -47,7 +47,7 @@ public class Input {
 					else {
 						System.out.println("Strings are invalid. Try again.");
 						System.out.println(menu);
-		
+
 					}
 
 				}
@@ -70,9 +70,9 @@ public class Input {
 					else {
 						System.out.println("Strings are invalid. Try again.");
 						System.out.println(menu);
-		
+
 					}
-				
+
 				}
 				if (option.equals("3")){
 					System.out.println("Update:\n 1.Dog\n 2.Dog_keeper\n 3.New_owner \n 4.Back to Menu");
@@ -93,7 +93,7 @@ public class Input {
 					else {
 						System.out.println("Strings are invalid. Try again.");
 						System.out.println(menu);
-		
+
 					}
 
 				}
@@ -113,14 +113,14 @@ public class Input {
 					else {
 						System.out.println("Strings are invalid. Try again.");
 						System.out.println(menu);
-		
+
 					}
 				}
 				if (option.equals("5")){
 					connectionHandler.dogCount();
 					System.out.println(menu);
 					option = scan.next();
-	
+
 				}
 				if(option.equals("6")) {
 					System.out.println("Bye.");
@@ -129,10 +129,10 @@ public class Input {
 				else {
 					System.out.println("Strings are invalid. Try again.");
 					System.out.println(menu);
-	
+
 				}
 			}
-		
+
 		catch(SQLException e) {
 			e.printStackTrace();
 		}
