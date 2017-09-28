@@ -75,5 +75,32 @@ public class Queries {
 		return display;
 	}
 	//End of INSERT Queries
-
+	
+	//UPDATE Queries
+	public String updateDog(String updateQuery) {
+		 updateQuery = "UPDATE Dog SET keeper=? WHERE name='Tracy'";
+		return updateQuery;	
+	}
+	
+	public String updateKeeper(String updateQuery) {
+		 updateQuery = "UPDATE Dog_keeper SET fname=?,lname=? WHERE keeper_id=8";
+		return updateQuery;	
+	}
+	
+	public String updateNewOwner(String updateQuery) {
+		updateQuery = "UPDATE New_owner SET fname=?,lname=? WHERE owner_id=10";
+		return updateQuery;	
+	}
+	//End of UPDATE queries
+	
+	//DELETE Queries
+	public String deleteKeeper(String deleteQuery) {
+		deleteQuery = "DELETE FROM New_owner WHERE "+ keeperId +" = ?";
+		return deleteQuery;	
+	}
+	
+	public String deleteNewOwnerAndDog(String deleteQuery) {
+		deleteQuery = "DELETE FROM New_owner WHERE "+ ownerId  +" = ?";
+		return deleteQuery;	
+	}
 }
