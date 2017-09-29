@@ -1,6 +1,7 @@
 package com.jdbc.queries;
 
 import com.jdbc.java_bean.JavaBean;
+import com.jdbc.menu.Input;
 
 public class Queries {
 
@@ -78,24 +79,27 @@ public class Queries {
 	
 	//UPDATE Queries
 	public String updateDog(String updateQuery) {
-		 updateQuery = "UPDATE Dog SET keeper=? WHERE name='Tracy'";
+		 updateQuery = "UPDATE Dog SET "+keeper+"=?, "+dogName+"=?, "+dogGender+"=?,"
+		 		+ " "+dogRace+"=?, "+ adoptionId+"=? WHERE keeper="+Input.getId()+"";
 		return updateQuery;	
 	}
 	
 	public String updateKeeper(String updateQuery) {
-		 updateQuery = "UPDATE Dog_keeper SET fname=?,lname=? WHERE keeper_id=8";
+		 updateQuery = "UPDATE Dog_keeper SET "+ keeperFirstName +"=?," + keeperLastName 
+				 +"=? WHERE keeper_id="+Input.getId()+"";
 		return updateQuery;	
 	}
 	
 	public String updateNewOwner(String updateQuery) {
-		updateQuery = "UPDATE New_owner SET fname=?,lname=? WHERE owner_id=10";
+		updateQuery = "UPDATE New_owner SET "+ownerFirstName+"=?, "+ownerLastName
+				+"=?, "+socialSecurityNumber +"=?, "+phone_number+"=? WHERE owner_id="+Input.getId()+"";
 		return updateQuery;	
 	}
 	//End of UPDATE queries
 	
 	//DELETE Queries
 	public String deleteKeeper(String deleteQuery) {
-		deleteQuery = "DELETE FROM New_owner WHERE "+ keeperId +" = ?";
+		deleteQuery = "DELETE FROM Dog_keeper WHERE "+ keeperId +" = ?";
 		return deleteQuery;	
 	}
 	
