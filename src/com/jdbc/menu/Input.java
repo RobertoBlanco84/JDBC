@@ -15,6 +15,7 @@ public class Input {
 	private static String phoneNumber;
 	
 	private static String dogName;
+	private static String updateName;
 	private static String gender;
 	private static String race;
 	private static int adoptionId;
@@ -34,6 +35,7 @@ public class Input {
 		while(isOn) {
 			System.out.println(menu);
 			String option = scan.next();
+			
 			//SELECT
 			if (option.equals("1")){
 				System.out.println("SELECT * FROM:\n 1.Dog\n 2.Dog_keeper\n 3.New_owner \n 4.Back to Menu");
@@ -56,13 +58,7 @@ public class Input {
 				if(option.equals("4")) {
 					System.out.println(menu);
 					option = scan.next();
-					System.out.println(menu);
-					option = scan.next();
-				}
-				else {
-					//System.out.println(noCharacters);
-					//System.out.println(menu);
-
+	
 				}
 
 			}
@@ -105,10 +101,6 @@ public class Input {
 					System.out.println(menu);
 					option = scan.next();
 				}
-				else {
-					System.out.println(noCharacters);
-				
-				}
 
 			}
 			
@@ -126,14 +118,15 @@ public class Input {
 					System.out.print("Enter a race: ");
 					race = scan.next();
 					System.out.print("Enter a adoption id: ");
+					adoptionId = scan.nextInt();
 					connectionHandler.updateDog();
 				}
 				if(option.equals("2")) {
-					System.out.println("Enter a Keeper_id:");
+					System.out.println("Update keeper WHERE id = ");
 					Id = scan.nextInt();
-					System.out.println("Enter a surname:");
+					System.out.println("Update surname:");
 					surName = scan.next();
-					System.out.println("Enter a lastname");
+					System.out.println("Update lastname");
 					lastName = scan.next();
 					connectionHandler.updateKeeper();
 				}
@@ -154,10 +147,6 @@ public class Input {
 					System.out.println(menu);
 					option = scan.next();
 				}
-				else {
-					System.out.println(noCharacters);
-			
-				}
 
 			}
 			//DELETE
@@ -170,7 +159,7 @@ public class Input {
 					connectionHandler.deleteKeeper();
 				}
 				if(option.equals("2")) {
-					System.out.println("Enter a keeper_id");
+					System.out.println("Enter a owner_id");
 					Id = scan.nextInt();
 					connectionHandler.deleteNewOwnerAndDog();
 				}
@@ -178,35 +167,22 @@ public class Input {
 					System.out.println(menu);
 					option = scan.next();
 				}
-				else {
-					System.out.println(noCharacters);
-		
-				}
 			}
 			if (option.equals("5")){
-				connectionHandler.dogCount();
-				System.out.println(menu);
-				option = scan.next();
-
+				connectionHandler.dogCount();	
 			}
 			if(option.equals("6")) {
 				System.out.println("Bye.");
 				System.exit(0); 
 			}
-			else {
-				//System.out.println(noCharacters);
-				//System.out.println(menu);
-
-			}
-
 		}
 
 	}
-
+	
+	// GETTERS
 	public static String getSurName() {
 		return surName;
 	}
-	
 	public static String getLastName() {
 		return lastName;
 	}
@@ -217,6 +193,9 @@ public class Input {
 	
 	public static String getDogName() {
 		return dogName;
+	}
+	public static String getUpdatedName() {
+		return updateName;
 	}
 	public static String getDogGender() {
 		return gender;

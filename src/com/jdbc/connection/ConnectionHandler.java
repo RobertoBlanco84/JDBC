@@ -33,7 +33,7 @@ public class ConnectionHandler  {
 
 		connection = DriverManager.getConnection(url,user,password);
 		statement = connection.createStatement();
-		resultSet = statement.executeQuery(queries.selectDog(""));
+		resultSet = statement.executeQuery(queries.selectDog());
 
 		while(resultSet.next()) {
 			System.out.println(resultSet.getInt(javaBean.getKeeper()) + " " +
@@ -47,7 +47,7 @@ public class ConnectionHandler  {
 	public void selectKeeper() throws SQLException{
 		connection = DriverManager.getConnection(url,user,password);
 		statement = connection.createStatement();
-		resultSet = statement.executeQuery(queries.selectKeeper(""));
+		resultSet = statement.executeQuery(queries.selectKeeper());
 
 		while(resultSet.next()) {
 			System.out.println(resultSet.getInt(javaBean.getKeeperId()) + " " + 
@@ -59,7 +59,7 @@ public class ConnectionHandler  {
 	public void selectNewOwner() throws SQLException{
 		connection = DriverManager.getConnection(url,user,password);
 		statement = connection.createStatement();	
-		resultSet = statement.executeQuery(queries.selectNewOwner(""));
+		resultSet = statement.executeQuery(queries.selectNewOwner());
 
 		while(resultSet.next()) {
 			System.out.println(resultSet.getInt(javaBean.getOwnerId()) + " " + 
@@ -74,14 +74,14 @@ public class ConnectionHandler  {
 	//INSERT methods
 	public void insertDog() throws SQLException {
 		connection = DriverManager.getConnection(url,user,password);
-		preparedStmt = connection.prepareStatement(queries.insertDog(""));
+		preparedStmt = connection.prepareStatement(queries.insertDog());
 		preparedStmt.setInt(1, Input.getId());
 		preparedStmt.setString(2, Input.getDogName());
 		preparedStmt.setString(3, Input.getDogGender());
 		preparedStmt.setString(4, Input.getDogRace());
 		preparedStmt.setInt(5, Input.getAdoptionId());
 		preparedStmt.executeUpdate();
-		preparedStmtSelect = connection.prepareStatement(queries.displayDogInsert(""));
+		preparedStmtSelect = connection.prepareStatement(queries.displayDogInsert());
 		resultSet = preparedStmtSelect.executeQuery();
 
 		if(resultSet.last()) {
@@ -95,11 +95,11 @@ public class ConnectionHandler  {
 
 	public void insertKeeper() throws SQLException {
 		connection = DriverManager.getConnection(url,user,password);
-		preparedStmt = connection.prepareStatement(queries.insertKeeper(""));
+		preparedStmt = connection.prepareStatement(queries.insertKeeper());
 		preparedStmt.setString(1, Input.getSurName());
 		preparedStmt.setString(2, Input.getLastName());
 		preparedStmt.executeUpdate();
-		preparedStmtSelect = connection.prepareStatement(queries.displayKeeperInsert(""));
+		preparedStmtSelect = connection.prepareStatement(queries.displayKeeperInsert());
 		resultSet = preparedStmtSelect.executeQuery();
 
 		if(resultSet.last()) {
@@ -114,13 +114,13 @@ public class ConnectionHandler  {
 
 	public void insertNewOwner() throws SQLException {
 		connection = DriverManager.getConnection(url,user,password);	
-		preparedStmt = connection.prepareStatement(queries.insertNewOwner(""));
+		preparedStmt = connection.prepareStatement(queries.insertNewOwner());
 		preparedStmt.setString(1, Input.getSurName());
 		preparedStmt.setString(2, Input.getLastName());
 		preparedStmt.setString(3, Input.getSSNumber());
 		preparedStmt.setString(4, Input.getPhoneNumber());
 		preparedStmt.executeUpdate();
-		preparedStmtSelect = connection.prepareStatement(queries.displayNewOwner(""));
+		preparedStmtSelect = connection.prepareStatement(queries.displayNewOwner());
 		resultSet = preparedStmtSelect.executeQuery();
 
 		if(resultSet.last()) {
@@ -138,7 +138,7 @@ public class ConnectionHandler  {
 	//Update methods
 	public void updateDog() throws SQLException {
 		connection = DriverManager.getConnection(url,user,password);
-		preparedStmt = connection.prepareStatement(queries.updateDog(""));
+		preparedStmt = connection.prepareStatement(queries.updateDog());
 		preparedStmt.setInt(1, Input.getId());
 		preparedStmt.setString(2, Input.getDogName());
 		preparedStmt.setString(3, Input.getDogGender());
@@ -151,7 +151,7 @@ public class ConnectionHandler  {
 
 	public void updateKeeper() throws SQLException {
 		connection = DriverManager.getConnection(url,user,password);
-		preparedStmt = connection.prepareStatement(queries.updateKeeper(""));
+		preparedStmt = connection.prepareStatement(queries.updateKeeper());
 		preparedStmt.setString(1, Input.getSurName());
 		preparedStmt.setString(2, Input.getLastName());
 		int rows = preparedStmt.executeUpdate();
@@ -160,7 +160,7 @@ public class ConnectionHandler  {
 	}
 	public void updateNewOwner() throws SQLException {
 		connection = DriverManager.getConnection(url,user,password);
-		preparedStmt = connection.prepareStatement(queries.updateNewOwner(""));
+		preparedStmt = connection.prepareStatement(queries.updateNewOwner());
 		preparedStmt.setString(1, Input.getSurName());
 		preparedStmt.setString(2, Input.getLastName());
 		preparedStmt.setString(3, Input.getSSNumber());
@@ -174,7 +174,7 @@ public class ConnectionHandler  {
 	//DELETE methods
 	public void deleteKeeper() throws SQLException {
 		connection = DriverManager.getConnection(url,user,password);
-		preparedStmt = connection.prepareStatement(queries.deleteKeeper(""));
+		preparedStmt = connection.prepareStatement(queries.deleteKeeper());
 		preparedStmt.setInt(1, Input.getId());
 		int rows = preparedStmt.executeUpdate();
 		System.out.println(rows+" row(s) deleted.");
@@ -183,7 +183,7 @@ public class ConnectionHandler  {
 
 	public void deleteNewOwnerAndDog() throws SQLException {
 		connection = DriverManager.getConnection(url,user,password);
-		preparedStmt = connection.prepareStatement(queries.deleteNewOwnerAndDog(""));
+		preparedStmt = connection.prepareStatement(queries.deleteNewOwnerAndDog());
 		preparedStmt.setInt(1, Input.getId());
 		int rows = preparedStmt.executeUpdate();
 		System.out.println(rows+" row(s) deleted.");
