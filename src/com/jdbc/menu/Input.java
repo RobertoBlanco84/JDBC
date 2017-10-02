@@ -109,7 +109,7 @@ public class Input {
 				System.out.println("Update:\n 1.Dog\n 2.Dog_keeper\n 3.New_owner \n 4.Back to Menu");
 				option = scan.next();
 				if(option.equals("1")) {
-					System.out.print("Enter a keeper Id: ");
+					System.out.print("Update dog WHERE keeper: ");
 					Id = scan.nextInt();
 					System.out.print("Enter a dog name: ");
 					dogName = scan.next();
@@ -122,7 +122,7 @@ public class Input {
 					connectionHandler.updateDog();
 				}
 				if(option.equals("2")) {
-					System.out.println("Update keeper WHERE id = ");
+					System.out.println("Update keeper WHERE keeper_id: ");
 					Id = scan.nextInt();
 					System.out.println("Update surname:");
 					surName = scan.next();
@@ -131,7 +131,7 @@ public class Input {
 					connectionHandler.updateKeeper();
 				}
 				if(option.equals("3")) {
-					System.out.print("Enter an owner Id: ");
+					System.out.print("Update New_owner WHERE owner_id: ");
 					Id = scan.nextInt();
 					System.out.print("Update surname: ");
 					surName = scan.next();

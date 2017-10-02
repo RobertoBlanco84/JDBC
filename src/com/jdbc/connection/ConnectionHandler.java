@@ -15,7 +15,7 @@ import com.jdbc.queries.Queries;
 
 
 public class ConnectionHandler  {
-	
+
 	private JavaBean javaBean = new JavaBean();
 	private Queries queries = new Queries();
 	private String url = "jdbc:mysql://localhost:3306/dog_shelter";
@@ -27,7 +27,7 @@ public class ConnectionHandler  {
 	Statement statement;
 	CallableStatement callableStatement;
 	ResultSet resultSet;
-	
+
 	// SELECT methods
 	public void  selectDog() throws SQLException {
 
