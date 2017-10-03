@@ -27,10 +27,9 @@ public class ConnectionHandler  {
 	Statement statement;
 	CallableStatement callableStatement;
 	ResultSet resultSet;
-
+	
 	// SELECT methods
 	public void  selectDog() throws SQLException {
-
 		connection = DriverManager.getConnection(url,user,password);
 		statement = connection.createStatement();
 		resultSet = statement.executeQuery(queries.selectDog());
