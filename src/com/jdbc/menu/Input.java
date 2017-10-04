@@ -38,7 +38,8 @@ public class Input {
 			
 			//SELECT
 			if (option.equals("1")){
-				System.out.println("SELECT * FROM:\n 1.Dog\n 2.Dog_keeper\n 3.New_owner \n 4.Back to Menu");
+				System.out.println("SELECT * FROM:\n 1.Dog\n 2.Dog_keeper\n 3.New_owner\n 4.Deleted_owners\n"
+						+ " 5.Back to Menu");
 				option = scan.next();
 				if(option.equals("1")) {
 					connectionHandler.selectDog();
@@ -56,6 +57,11 @@ public class Input {
 					option = scan.next();
 				}
 				if(option.equals("4")) {
+					connectionHandler.selectDeletedOwners();
+					System.out.println(menu);
+					option = scan.next();
+				}
+				if(option.equals("5")) {
 					System.out.println(menu);
 					option = scan.next();
 	

@@ -35,6 +35,11 @@ public class Queries {
 		String selectQuery = "SELECT * FROM new_owner";
 		return selectQuery;
 	}
+	
+	public String selectDeletedOwners() {
+		String selectQuery = "SELECT * FROM deletedOwners";
+		return selectQuery;
+	}
 	//End of SELECT Queries
 
 	//INSERT Queries

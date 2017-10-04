@@ -42,7 +42,7 @@ public class ConnectionHandler  {
 					resultSet.getInt(javaBean.getAdoptionId()));
 		}
 	}
-
+	
 	public void selectKeeper() throws SQLException{
 		connection = DriverManager.getConnection(url,user,password);
 		statement = connection.createStatement();
@@ -66,6 +66,21 @@ public class ConnectionHandler  {
 					resultSet.getString(javaBean.getOwnerLastName()) + " " + 
 					resultSet.getString(javaBean.getSSNumber()) + " " +
 					resultSet.getString(javaBean.getOwnerPhoneNumber()));
+		}
+	}
+	
+	public void selectDeletedOwners() throws SQLException{
+		connection = DriverManager.getConnection(url,user,password);
+		statement = connection.createStatement();	
+		resultSet = statement.executeQuery(queries.selectDeletedOwners());
+
+		while(resultSet.next()) {
+			System.out.println(resultSet.getInt(javaBean.getOwnerId()) + " " + 
+					resultSet.getString(javaBean.getOwnerFirstName()) + " " +
+					resultSet.getString(javaBean.getOwnerLastName()) + " " + 
+					resultSet.getString(javaBean.getSSNumber()) + " " +
+					resultSet.getString(javaBean.getOwnerPhoneNumber()) + " " +
+					resultSet.getDate(javaBean.getDateTime()));
 		}
 	}
 	//End of SELECT methods

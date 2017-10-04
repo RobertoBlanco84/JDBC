@@ -1,5 +1,7 @@
 package com.jdbc.java_bean;
 
+import java.sql.Date;
+
 public class JavaBean {
 	
 	private String keeper = "keeper";
@@ -17,6 +19,7 @@ public class JavaBean {
 	private String ownerLastName = "lname";
 	private String socialSecurityNumber = "ss_number";
 	private String phoneNumber = "phone_number";
+	private String dateTime = "date_time";
 	
 	public String getKeeper() {
 		return keeper;
@@ -60,4 +63,7 @@ public class JavaBean {
 		return phoneNumber;
 	}
 	
+	public String getDateTime() {
+		return dateTime;
+	}
 }
