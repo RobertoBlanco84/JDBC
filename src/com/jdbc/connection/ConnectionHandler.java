@@ -27,8 +27,8 @@ public class ConnectionHandler  {
 	Statement statement;
 	CallableStatement callableStatement;
 	ResultSet resultSet;
-	
-	// SELECT methods
+
+	// SELECT connections
 	public void  selectDog() throws SQLException {
 		connection = DriverManager.getConnection(url,user,password);
 		statement = connection.createStatement();
@@ -42,7 +42,7 @@ public class ConnectionHandler  {
 					resultSet.getInt(javaBean.getAdoptionId()));
 		}
 	}
-	
+
 	public void selectKeeper() throws SQLException{
 		connection = DriverManager.getConnection(url,user,password);
 		statement = connection.createStatement();
@@ -68,7 +68,7 @@ public class ConnectionHandler  {
 					resultSet.getString(javaBean.getOwnerPhoneNumber()));
 		}
 	}
-	
+
 	public void selectDeletedOwners() throws SQLException{
 		connection = DriverManager.getConnection(url,user,password);
 		statement = connection.createStatement();	
@@ -83,9 +83,9 @@ public class ConnectionHandler  {
 					resultSet.getDate(javaBean.getDateTime()));
 		}
 	}
-	//End of SELECT methods
+	//End of SELECT connections
 
-	//INSERT methods
+	//INSERT connections
 	public void insertDog() throws SQLException {
 		connection = DriverManager.getConnection(url,user,password);
 		preparedStmt = connection.prepareStatement(queries.insertDog());
@@ -147,9 +147,9 @@ public class ConnectionHandler  {
 		}
 
 	}
-	//End of Insert methods
+	//End of Insert connections
 
-	//Update methods
+	//Update connections
 	public void updateDog() throws SQLException {
 		connection = DriverManager.getConnection(url,user,password);
 		preparedStmt = connection.prepareStatement(queries.updateDog());
@@ -183,9 +183,9 @@ public class ConnectionHandler  {
 		System.out.println(rows + " row(s) updated.");
 
 	}
-	//End of UPDATE methods
+	//End of UPDATE connections
 
-	//DELETE methods
+	//DELETE connections
 	public void deleteKeeper() throws SQLException {
 		connection = DriverManager.getConnection(url,user,password);
 		preparedStmt = connection.prepareStatement(queries.deleteKeeper());
@@ -203,9 +203,9 @@ public class ConnectionHandler  {
 		System.out.println(rows+" row(s) deleted.");
 
 	}
-	//End of DELETE methods
+	//End of DELETE connections
 
-	//Stored procedure
+	//Stored procedure connection
 	public void dogCount() throws SQLException {
 		connection = DriverManager.getConnection(url,user,password);		
 		callableStatement = connection.prepareCall("{call dog_count(?,?)}");
@@ -216,7 +216,8 @@ public class ConnectionHandler  {
 		System.out.println("Number of dogs in table 'Dog': " + count);
 
 	}
-	
+
+	//Search connection
 	public void searchNewOwner() throws SQLException{
 		connection = DriverManager.getConnection(url,user,password);
 		statement = connection.createStatement();	
@@ -230,10 +231,28 @@ public class ConnectionHandler  {
 					resultSet.getString(javaBean.getOwnerPhoneNumber()));
 		}
 		else {
-			System.out.println("Id doesnt exist");
+			System.out.println("Owner_id doesnt exist.");
 		}
+
 	}
 
+	/*
+	public void display() throws SQLException {
+		resultSet = statement.executeQuery(queries.searchNewOwner());
+
+		if(resultSet.next()) {
+			System.out.println(resultSet.getInt(javaBean.getOwnerId()) + " " + 
+					resultSet.getString(javaBean.getOwnerFirstName()) + " " +
+					resultSet.getString(javaBean.getOwnerLastName()) + " " + 
+					resultSet.getString(javaBean.getSSNumber()) + " " +
+					resultSet.getString(javaBean.getOwnerPhoneNumber()));
+		}
+		else {
+			System.out.println("Owner_id doesnt exist.");
+		}
+		//return resultSet;
+	}
+	 */
 }
 
 

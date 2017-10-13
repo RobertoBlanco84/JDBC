@@ -1,7 +1,5 @@
 package com.jdbc.java_bean;
 
-import java.sql.Date;
-
 public class JavaBean {
 	
 	private String keeper = "keeper";
