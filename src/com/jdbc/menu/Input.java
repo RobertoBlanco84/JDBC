@@ -25,7 +25,7 @@ public class Input {
 	ConnectionHandler connectionHandler = new ConnectionHandler();
 	boolean isOn = true;
 	String menu = " Dog_shelter Menu \n What do you want to do? \n 1.Select \n 2.Insert "
-			+ "\n 3.Update \n 4.Delete \n 5.Dog Count \n 6.Exit \n";
+			+ "\n 3.Update \n 4.Delete \n 5.Dog Count \n 6.Search \n 7.Exit \n";
 	String noCharacters = "Enter a number, character(s) are invalid.";
 
 	public void Menu() throws SQLException {
@@ -177,7 +177,12 @@ public class Input {
 			if (option.equals("5")){
 				connectionHandler.dogCount();	
 			}
-			if(option.equals("6")) {
+			if (option.equals("6")){
+				System.out.println("Search after New_owner by id: ");	
+				Id = scan.nextInt();
+				connectionHandler.searchNewOwner();
+			}
+			if(option.equals("7")) {
 				System.out.println("Bye.");
 				System.exit(0); 
 			}

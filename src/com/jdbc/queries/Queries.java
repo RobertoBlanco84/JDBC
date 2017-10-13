@@ -112,4 +112,10 @@ public class Queries {
 		String deleteQuery = "DELETE FROM New_owner WHERE "+ ownerId  +" = ?";
 		return deleteQuery;	
 	}
+	
+	//Search query
+	public String searchNewOwner() {
+		String searchQuery = "SELECT * FROM New_owner where owner_id = " +Input.getId()+"";
+		return searchQuery;
+	}
 }

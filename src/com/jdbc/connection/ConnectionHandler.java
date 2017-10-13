@@ -215,7 +215,24 @@ public class ConnectionHandler  {
 		int count = callableStatement.getInt(2);
 		System.out.println("Number of dogs in table 'Dog': " + count);
 
-	} 
+	}
+	
+	public void searchNewOwner() throws SQLException{
+		connection = DriverManager.getConnection(url,user,password);
+		statement = connection.createStatement();	
+		resultSet = statement.executeQuery(queries.searchNewOwner());
+
+		if(resultSet.next()) {
+			System.out.println(resultSet.getInt(javaBean.getOwnerId()) + " " + 
+					resultSet.getString(javaBean.getOwnerFirstName()) + " " +
+					resultSet.getString(javaBean.getOwnerLastName()) + " " + 
+					resultSet.getString(javaBean.getSSNumber()) + " " +
+					resultSet.getString(javaBean.getOwnerPhoneNumber()));
+		}
+		else {
+			System.out.println("Id doesnt exist");
+		}
+	}
 
 }
 
