@@ -1,7 +1,12 @@
 package com.jdbc.java_bean;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.LinkedList;
 public class JavaBean {
-	
+	LinkedList<String> list1 = new LinkedList<String>();
+	LinkedList<String> list2 = new LinkedList<String>();
+	LinkedList<String> list3 = new LinkedList<String>();
 	private String keeper = "keeper";
 	private String dogName = "name";
 	private String dogGender = "gender";

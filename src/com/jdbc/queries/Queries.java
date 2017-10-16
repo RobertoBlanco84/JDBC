@@ -1,10 +1,11 @@
 package com.jdbc.queries;
 
+
+
 import com.jdbc.java_bean.JavaBean;
 import com.jdbc.menu.Input;
 
 public class Queries {
-
 	JavaBean javaBean = new JavaBean();
 	private String keeper= javaBean.getKeeper();
 	private String dogName = javaBean.getDogName();
@@ -19,7 +20,7 @@ public class Queries {
 	private String ownerLastName = javaBean.getOwnerLastName();
 	private String socialSecurityNumber = javaBean.getSSNumber();
 	private String phone_number = javaBean.getOwnerPhoneNumber();
-
+	
 	//SELECT Queries
 	public String selectDog() {
 		String selectQuery = "SELECT * FROM dog";

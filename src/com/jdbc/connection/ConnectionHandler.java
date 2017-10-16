@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
+import java.util.LinkedList;
 import java.sql.PreparedStatement;
 
 import com.jdbc.java_bean.JavaBean;
@@ -15,7 +16,7 @@ import com.jdbc.queries.Queries;
 
 
 public class ConnectionHandler  {
-	
+
 	//Con
 	private JavaBean javaBean = new JavaBean();
 	private Queries queries = new Queries();
@@ -28,7 +29,8 @@ public class ConnectionHandler  {
 	Statement statement;
 	CallableStatement callableStatement;
 	ResultSet resultSet;
-
+	LinkedList<String> list = new LinkedList<>();
+	
 	// SELECT connections
 	public void  selectDog() throws SQLException {
 		connection = DriverManager.getConnection(url,user,password);
@@ -48,11 +50,28 @@ public class ConnectionHandler  {
 		connection = DriverManager.getConnection(url,user,password);
 		statement = connection.createStatement();
 		resultSet = statement.executeQuery(queries.selectKeeper());
+		String id = javaBean.getKeeperId();
+		String fname = javaBean.getKeeperFirstName();
+		String lname = javaBean.getKeeperLastName();
+		list.add(id);
+		list.add(fname);
+		list.add(lname);
 
 		while(resultSet.next()) {
-			System.out.println(resultSet.getInt(javaBean.getKeeperId()) + " " + 
+
+			System.out.println(resultSet.getInt(id) + " : " + 
+					resultSet.getString(fname)+ " : " + 
+					resultSet.getString(lname));
+			/*	for(int i=0 ; i<list.size(); i++) {
+				resultSet.getString(list.get(i));
+				System.out.println(i);
+			}*/
+
+			/*System.out.println(resultSet.getInt(javaBean.getKeeperId()) + " " + 
 					resultSet.getString(javaBean.getKeeperFirstName()) + " " +
-					resultSet.getString(javaBean.getKeeperLastName()));
+					resultSet.getString(javaBean.getKeeperLastName()));*/
+
+
 		}
 	}
 
