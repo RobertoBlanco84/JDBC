@@ -26,7 +26,6 @@ public class Input {
 	boolean isActive = true;
 	String menu = " Dog_shelter Menu \n What do you want to do? \n 1.Select \n 2.Insert "
 			+ "\n 3.Update \n 4.Delete \n 5.Search \n 6.Dog Count \n 7.Exit \n";
-	String noCharacters = "Enter a number, character(s) are invalid.";
 
 	public void Menu()  {
 		//System.out.println(menu);	
