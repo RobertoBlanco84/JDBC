@@ -27,7 +27,7 @@ public class ConnectionHandler  {
 	CallableStatement callableStatement;
 	ResultSet resultSet;
 
-	
+//ÄNDRA METOD NAMN!!!	
 	// SELECT connections
 	public void  selectDog() throws SQLException {
 		connection = DriverManager.getConnection(url,user,password);
