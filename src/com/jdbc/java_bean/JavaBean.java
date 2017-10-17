@@ -29,13 +29,8 @@ public class JavaBean {
 		list.add(dogGender);
 		list.add(dogRace);
 		list.add(adoptionId);
-		/*for(int i = 0; i <list.size(); i++) {
-			list.get(i);
-		}*/
-		//list.toString();
 		return list;
 	}
-	
 	
 	public List<String> getKeeperList(){
 		list.add(keeperId);
@@ -45,6 +40,15 @@ public class JavaBean {
 	}
 	
 	public List<String> getOwnerList(){
+		list.add(ownerId);
+		list.add(ownerFirstName);
+		list.add(ownerLastName);
+		list.add(socialSecurityNumber);
+		list.add(phoneNumber);
+		return list;
+	}
+	
+	public List<String> getDeletedOwnerList(){
 		list.add(ownerId);
 		list.add(ownerFirstName);
 		list.add(ownerLastName);

@@ -27,7 +27,7 @@ public class ConnectionHandler  {
 	CallableStatement callableStatement;
 	ResultSet resultSet;
 
-//ÄNDRA METOD NAMN!!!	
+	//ÄNDRA METOD NAMN!!!	
 	// SELECT connections
 	public void  selectDog() throws SQLException {
 		connection = DriverManager.getConnection(url,user,password);
@@ -52,10 +52,13 @@ public class ConnectionHandler  {
 		statement = connection.createStatement();
 		resultSet = statement.executeQuery(queries.selectKeeper());
 		
-		while(resultSet.next()) {
+		while(resultSet.next() && javaBean.getKeeperList().size()==3) {
 			
-			/*for(int i = 0; i<javaBean.getKeeperList().size(); i++) {
+		/*	for(int i = 0; i<javaBean.getKeeperList().size(); i++) {
 			System.out.println(resultSet.getString(javaBean.getKeeperList().get(i)));
+				for(int j = 0; j<3; j++) {
+					System.out.println(javaBean.getKeeperList().get(j));
+				}
 			}*/
 			System.out.println(resultSet.getString(javaBean.getKeeperList().get(0)) + " " +
 					resultSet.getString(javaBean.getKeeperList().get(1)) + " " +
@@ -83,8 +86,8 @@ public class ConnectionHandler  {
 			System.out.println(resultSet.getString(javaBean.getOwnerList().get(0)) + " " +
 					resultSet.getString(javaBean.getOwnerList().get(1)) + " " +
 					resultSet.getString(javaBean.getOwnerList().get(2)) + " " +
-					resultSet.getString(javaBean.getKeeperList().get(3)) + " " +
-					resultSet.getString(javaBean.getKeeperList().get(4)));
+					resultSet.getString(javaBean.getOwnerList().get(3)) + " " +
+					resultSet.getString(javaBean.getOwnerList().get(4)));
 		}
 	}
 
@@ -94,12 +97,19 @@ public class ConnectionHandler  {
 		resultSet = statement.executeQuery(queries.selectDeletedOwners());
 
 		while(resultSet.next()) {
-			System.out.println(resultSet.getInt(javaBean.getOwnerId()) + " " + 
+			/*System.out.println(resultSet.getInt(javaBean.getOwnerId()) + " " + 
 					resultSet.getString(javaBean.getOwnerFirstName()) + " " +
 					resultSet.getString(javaBean.getOwnerLastName()) + " " + 
 					resultSet.getString(javaBean.getSSNumber()) + " " +
 					resultSet.getString(javaBean.getOwnerPhoneNumber()) + " " +
-					resultSet.getDate(javaBean.getDateTime()));
+					resultSet.getDate(javaBean.getDateTime()));*/
+			System.out.println(resultSet.getString(javaBean.getDeletedOwnerList().get(0)) + " " +
+					resultSet.getString(javaBean.getDeletedOwnerList().get(1)) + " " +
+					resultSet.getString(javaBean.getDeletedOwnerList().get(2)) + " " +
+					resultSet.getString(javaBean.getDeletedOwnerList().get(3)) + " " +
+					resultSet.getString(javaBean.getDeletedOwnerList().get(4)) + " " +
+					resultSet.getString(javaBean.getDeletedOwnerList().get(5)));
+			
 		}
 	}
 	//End of SELECT connections
@@ -118,9 +128,14 @@ public class ConnectionHandler  {
 		resultSet = preparedStmtSelect.executeQuery();
 
 		if(resultSet.last()) {
-			String result = resultSet.getInt(javaBean.getKeeper()) + " " + resultSet.getString(javaBean.getDogName()) + " " +
+			/*String result = resultSet.getInt(javaBean.getKeeper()) + " " + resultSet.getString(javaBean.getDogName()) + " " +
 					resultSet.getString(javaBean.getDogGender()) + " " + resultSet.getString(javaBean.getDogRace()) + " " +  	
-					resultSet.getInt(javaBean.getAdoptionId());
+					resultSet.getInt(javaBean.getAdoptionId());*/
+			String result = resultSet.getString(javaBean.getDogList().get(0) + " " +
+					resultSet.getString(javaBean.getDogList().get(1)) + " " +
+					resultSet.getString(javaBean.getDogList().get(2)) + " " +
+					resultSet.getString(javaBean.getDogList().get(3)) + " " +
+					resultSet.getString(javaBean.getDogList().get(4)));
 			System.out.println(result);
 		}
 
