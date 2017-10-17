@@ -1,12 +1,11 @@
 package com.jdbc.java_bean;
 
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.LinkedList;
+import java.util.List;
+import java.util.ListIterator;
+
 public class JavaBean {
-	LinkedList<String> list1 = new LinkedList<String>();
-	LinkedList<String> list2 = new LinkedList<String>();
-	LinkedList<String> list3 = new LinkedList<String>();
+	List<String> list = new LinkedList<>();
 	private String keeper = "keeper";
 	private String dogName = "name";
 	private String dogGender = "gender";
@@ -23,6 +22,37 @@ public class JavaBean {
 	private String socialSecurityNumber = "ss_number";
 	private String phoneNumber = "phone_number";
 	private String dateTime = "date_time";
+	
+	public List<String> getDogList() {
+		list.add(keeper);
+		list.add(dogName);
+		list.add(dogGender);
+		list.add(dogRace);
+		list.add(adoptionId);
+		/*for(int i = 0; i <list.size(); i++) {
+			list.get(i);
+		}*/
+		//list.toString();
+		return list;
+	}
+	
+	
+	public List<String> getKeeperList(){
+		list.add(keeperId);
+		list.add(keeperFirstName);
+		list.add(keeperLastName);
+		return list;
+	}
+	
+	public List<String> getOwnerList(){
+		list.add(ownerId);
+		list.add(ownerFirstName);
+		list.add(ownerLastName);
+		list.add(socialSecurityNumber);
+		list.add(phoneNumber);
+		list.add(dateTime);
+		return list;
+	}
 	
 	public String getKeeper() {
 		return keeper;
