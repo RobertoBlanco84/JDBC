@@ -2,9 +2,7 @@ package com.jdbc.menu;
 
 import java.sql.SQLException;
 import java.util.Scanner;
-
 import com.jdbc.connection.ConnectionHandler;
-import com.jdbc.java_bean.JavaBean;
 
 public class Input {
 
@@ -20,7 +18,7 @@ public class Input {
 	private static String race;
 	private static int adoptionId;
 
-	JavaBean javaBean = new JavaBean();
+
 	ConnectionHandler connectionHandler = new ConnectionHandler();
 	Scanner scan = new Scanner(System.in);
 	boolean isActive = true;
@@ -187,7 +185,7 @@ public class Input {
 				}
 			}
 		}
-		
+
 		catch(SQLException e) {
 			e.printStackTrace();
 		}

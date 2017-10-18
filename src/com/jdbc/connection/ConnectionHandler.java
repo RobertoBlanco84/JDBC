@@ -9,17 +9,27 @@ import java.sql.Statement;
 import java.sql.Types;
 import java.sql.PreparedStatement;
 
-import com.jdbc.java_bean.JavaBean;
+import com.jdbc.java_bean.DeletedOwnerBean;
+import com.jdbc.java_bean.DogBean;
+import com.jdbc.java_bean.DogKeeperBean;
+import com.jdbc.java_bean.NewOwnerBean;
 import com.jdbc.menu.Input;
 import com.jdbc.queries.Queries;
 
 
 public class ConnectionHandler  {
-	private JavaBean javaBean = new JavaBean();
+
+	private DogBean dogBean = new DogBean();
+	private DogKeeperBean dogKeeperBean = new DogKeeperBean();
+	private DeletedOwnerBean deletedOwnerBean = new DeletedOwnerBean();
+	private NewOwnerBean newOwnerBean = new NewOwnerBean();
+
 	private Queries queries = new Queries();
 	private String url = "jdbc:mysql://localhost:3306/dog_shelter";
 	private String user = "root";
 	private String password = "";
+
+
 	Connection connection;
 	PreparedStatement preparedStmt;
 	PreparedStatement preparedStmtSelect;
@@ -34,16 +44,16 @@ public class ConnectionHandler  {
 		statement = connection.createStatement();
 		resultSet = statement.executeQuery(queries.selectDog());
 		while(resultSet.next()) {
-			System.out.println(resultSet.getString(javaBean.getDogList().get(0)) + " " +
-			resultSet.getString(javaBean.getDogList().get(1)) + " " +
-			resultSet.getString(javaBean.getDogList().get(2)) + " " +
-			resultSet.getString(javaBean.getDogList().get(3)) + " " +
-			resultSet.getString(javaBean.getDogList().get(4)));
-			
+			System.out.println(resultSet.getString(dogBean.getDogList().get(0)) + " " +
+					resultSet.getString(dogBean.getDogList().get(1)) + " " +
+					resultSet.getString(dogBean.getDogList().get(2)) + " " +
+					resultSet.getString(dogBean.getDogList().get(3)) + " " +
+					resultSet.getString(dogBean.getDogList().get(4)));
+
 			/*for(int i = 0; i<javaBean.getDogList().size(); i++) {
 				System.out.println(resultSet.getString(javaBean.getDogList().get(i)));
 			}*/
-			
+
 		}
 	}
 
@@ -51,22 +61,21 @@ public class ConnectionHandler  {
 		connection = DriverManager.getConnection(url,user,password);
 		statement = connection.createStatement();
 		resultSet = statement.executeQuery(queries.selectKeeper());
-		
-		while(resultSet.next() && javaBean.getKeeperList().size()==3) {
-			
-		/*	for(int i = 0; i<javaBean.getKeeperList().size(); i++) {
+
+		while(resultSet.next()) {
+			/*	for(int i = 0; i<javaBean.getKeeperList().size(); i++) {
 			System.out.println(resultSet.getString(javaBean.getKeeperList().get(i)));
 				for(int j = 0; j<3; j++) {
 					System.out.println(javaBean.getKeeperList().get(j));
 				}
 			}*/
-			System.out.println(resultSet.getString(javaBean.getKeeperList().get(0)) + " " +
-					resultSet.getString(javaBean.getKeeperList().get(1)) + " " +
-					resultSet.getString(javaBean.getKeeperList().get(2)));
-		/*	for(int i = 0; i<javaBean.getKeeperList().size(); i++) {
-				
-				//javaBean.getKeeperList().get(i);
-			}*/
+			System.out.println(resultSet.getString(dogKeeperBean.getKeeperList().get(0)) + " " +
+					resultSet.getString(dogKeeperBean.getKeeperList().get(1)) + " " +
+					resultSet.getString(dogKeeperBean.getKeeperList().get(2)));
+			/*	for(int i = 0; i<javaBean.getKeeperList().size(); i++) {
+
+			//javaBean.getKeeperList().get(i);
+		}*/
 			//resultSet.getString(javaBean.getKeeperList().get(i));
 			//System.out.println(resultSet.getString(javaBean.getKeeperList().iterator()));
 		}
@@ -79,15 +88,15 @@ public class ConnectionHandler  {
 
 		while(resultSet.next()) {
 			/*System.out.println(resultSet.getInt(javaBean.getOwnerId()) + " " + 
-					resultSet.getString(javaBean.getOwnerFirstName()) + " " +
-					resultSet.getString(javaBean.getOwnerLastName()) + " " + 
-					resultSet.getString(javaBean.getSSNumber()) + " " +
-					resultSet.getString(javaBean.getOwnerPhoneNumber()));*/
-			System.out.println(resultSet.getString(javaBean.getOwnerList().get(0)) + " " +
-					resultSet.getString(javaBean.getOwnerList().get(1)) + " " +
-					resultSet.getString(javaBean.getOwnerList().get(2)) + " " +
-					resultSet.getString(javaBean.getOwnerList().get(3)) + " " +
-					resultSet.getString(javaBean.getOwnerList().get(4)));
+			resultSet.getString(javaBean.getOwnerFirstName()) + " " +
+			resultSet.getString(javaBean.getOwnerLastName()) + " " + 
+			resultSet.getString(javaBean.getSSNumber()) + " " +
+			resultSet.getString(javaBean.getOwnerPhoneNumber()));*/
+			System.out.println(resultSet.getString(newOwnerBean.getNewOwnerList().get(0)) + " " +
+					resultSet.getString(newOwnerBean.getNewOwnerList().get(1)) + " " +
+					resultSet.getString(newOwnerBean.getNewOwnerList().get(2)) + " " +
+					resultSet.getString(newOwnerBean.getNewOwnerList().get(3)) + " " +
+					resultSet.getString(newOwnerBean.getNewOwnerList().get(4)));
 		}
 	}
 
@@ -98,18 +107,18 @@ public class ConnectionHandler  {
 
 		while(resultSet.next()) {
 			/*System.out.println(resultSet.getInt(javaBean.getOwnerId()) + " " + 
-					resultSet.getString(javaBean.getOwnerFirstName()) + " " +
-					resultSet.getString(javaBean.getOwnerLastName()) + " " + 
-					resultSet.getString(javaBean.getSSNumber()) + " " +
-					resultSet.getString(javaBean.getOwnerPhoneNumber()) + " " +
-					resultSet.getDate(javaBean.getDateTime()));*/
-			System.out.println(resultSet.getString(javaBean.getDeletedOwnerList().get(0)) + " " +
-					resultSet.getString(javaBean.getDeletedOwnerList().get(1)) + " " +
-					resultSet.getString(javaBean.getDeletedOwnerList().get(2)) + " " +
-					resultSet.getString(javaBean.getDeletedOwnerList().get(3)) + " " +
-					resultSet.getString(javaBean.getDeletedOwnerList().get(4)) + " " +
-					resultSet.getString(javaBean.getDeletedOwnerList().get(5)));
-			
+			resultSet.getString(javaBean.getOwnerFirstName()) + " " +
+			resultSet.getString(javaBean.getOwnerLastName()) + " " + 
+			resultSet.getString(javaBean.getSSNumber()) + " " +
+			resultSet.getString(javaBean.getOwnerPhoneNumber()) + " " +
+			resultSet.getDate(javaBean.getDateTime()));*/
+			System.out.println(resultSet.getString(deletedOwnerBean.getDeletedOwnerList().get(0)) + " " +
+					resultSet.getString(deletedOwnerBean.getDeletedOwnerList().get(1)) + " " +
+					resultSet.getString(deletedOwnerBean.getDeletedOwnerList().get(2)) + " " +
+					resultSet.getString(deletedOwnerBean.getDeletedOwnerList().get(3)) + " " +
+					resultSet.getString(deletedOwnerBean.getDeletedOwnerList().get(4)) + " " +
+					resultSet.getString(deletedOwnerBean.getDeletedOwnerList().get(5)));
+
 		}
 	}
 	//End of SELECT connections
@@ -128,15 +137,18 @@ public class ConnectionHandler  {
 		resultSet = preparedStmtSelect.executeQuery();
 
 		if(resultSet.last()) {
-			/*String result = resultSet.getInt(javaBean.getKeeper()) + " " + resultSet.getString(javaBean.getDogName()) + " " +
-					resultSet.getString(javaBean.getDogGender()) + " " + resultSet.getString(javaBean.getDogRace()) + " " +  	
-					resultSet.getInt(javaBean.getAdoptionId());*/
-			String result = resultSet.getString(javaBean.getDogList().get(0) + " " +
-					resultSet.getString(javaBean.getDogList().get(1)) + " " +
-					resultSet.getString(javaBean.getDogList().get(2)) + " " +
-					resultSet.getString(javaBean.getDogList().get(3)) + " " +
-					resultSet.getString(javaBean.getDogList().get(4)));
+			String result = resultSet.getString(dogBean.getDogList().get(0) + " " +
+					resultSet.getString(dogBean.getDogList().get(1)) + " " +
+					resultSet.getString(dogBean.getDogList().get(2)) + " " +
+					resultSet.getString(dogBean.getDogList().get(3)) + " " +
+					resultSet.getString(dogBean.getDogList().get(4)));
 			System.out.println(result);
+			/*String result = resultSet.getString(javaBean.getDogList().get(0) + " " +
+			resultSet.getString(javaBean.getDogList().get(1)) + " " +
+			resultSet.getString(javaBean.getDogList().get(2)) + " " +
+			resultSet.getString(javaBean.getDogList().get(3)) + " " +
+			resultSet.getString(javaBean.getDogList().get(4)));
+	System.out.println(result);*/
 		}
 
 	}
@@ -156,16 +168,21 @@ public class ConnectionHandler  {
 		list.add(fname);
 		list.add(lname);*/
 
-		if(resultSet.last()) {
-			/*String result = resultSet.getInt(javaBean.getKeeperId()) + " " + 
-					resultSet.getString(javaBean.getKeeperFirstName()) + " " +
-					resultSet.getString(javaBean.getKeeperLastName());
-			System.out.println(result);*/
-			//System.out.println(resultSet.getString(keeperId) + " " +
-			//resultSet.getString(fname) + " " + resultSet.getString(lname));
+
+		if (resultSet.last()) {
+			/*
+			 * String result = resultSet.getInt(javaBean.getKeeperId()) + " " +
+			 * resultSet.getString(javaBean.getKeeperFirstName()) + " " +
+			 * resultSet.getString(javaBean.getKeeperLastName());
+			 * System.out.println(result);
+			 */
+			// System.out.println(resultSet.getString(keeperId) + " " +
+			// resultSet.getString(fname) + " " + resultSet.getString(lname));
+			String result = resultSet.getString(dogKeeperBean.getKeeperList().get(1)) + " "
+					+ resultSet.getString(dogKeeperBean.getKeeperList().get(2));
+			System.out.println(result);
 
 		}
-
 	}
 
 	public void insertNewOwner() throws SQLException {
@@ -180,12 +197,11 @@ public class ConnectionHandler  {
 		resultSet = preparedStmtSelect.executeQuery();
 
 		if(resultSet.last()) {
-			System.out.println(resultSet.getString(javaBean.getOwnerId()) + " " + 
-					resultSet.getString(javaBean.getOwnerFirstName()) + " " +
-					resultSet.getString(javaBean.getOwnerLastName()) + " " + 
-					resultSet.getString(javaBean.getSSNumber())+ " " + 
-					resultSet.getString(javaBean.getOwnerPhoneNumber()));
-
+			System.out.println(resultSet.getString(newOwnerBean.getOwnerId()) + " " + 
+					resultSet.getString(newOwnerBean.getOwnerFirstName()) + " " +
+					resultSet.getString(newOwnerBean.getOwnerLastName()) + " " + 
+					resultSet.getString(newOwnerBean.getSocialSecurityNumber())+ " " + 
+					resultSet.getString(newOwnerBean.getPhoneNumber()));
 		}
 
 	}
@@ -266,11 +282,11 @@ public class ConnectionHandler  {
 		resultSet = statement.executeQuery(queries.searchNewOwner());
 
 		if(resultSet.next()) {
-			System.out.println(resultSet.getInt(javaBean.getOwnerId()) + " " + 
-					resultSet.getString(javaBean.getOwnerFirstName()) + " " +
-					resultSet.getString(javaBean.getOwnerLastName()) + " " + 
-					resultSet.getString(javaBean.getSSNumber()) + " " +
-					resultSet.getString(javaBean.getOwnerPhoneNumber()));
+			System.out.println(resultSet.getInt(newOwnerBean.getOwnerId()) + " " + 
+					resultSet.getString(newOwnerBean.getOwnerFirstName()) + " " +
+					resultSet.getString(newOwnerBean.getOwnerLastName()) + " " + 
+					resultSet.getString(newOwnerBean.getSocialSecurityNumber()) + " " +
+					resultSet.getString(newOwnerBean.getPhoneNumber()));
 		}
 		else {
 			System.out.println("Owner_id doesnt exist.");
@@ -296,5 +312,3 @@ public class ConnectionHandler  {
 	}
 	 */
 }
-
-
