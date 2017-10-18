@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 import com.jdbc.connection.ConnectionHandler;
 
+
 public class Input {
 
 	private static String surName;

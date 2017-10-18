@@ -51,8 +51,9 @@ public class Queries {
 	//INSERT Queries
 	public String insertDog() {
 		String insertQuery = "INSERT INTO Dog ("+ dogBean.getDogList().get(0) + ", " +
-				dogBean.getDogList().get(1) + ", " + dogBean.getDogList().get(2) +
-				", " + dogBean.getDogList().get(3) + " ," 
+				dogBean.getDogList().get(1) + ", " +
+				dogBean.getDogList().get(2) + ", " + 
+				dogBean.getDogList().get(3) + " ," 
 				+ dogBean.getDogList().get(4) + ") VALUES (?,?,?,?,?)";
 		return insertQuery;
 	}
@@ -126,15 +127,15 @@ public class Queries {
 		return updateQuery;    
 	}
 	//End of UPDATE queries
-	
+
 	//DELETE Queries
 	public String deleteKeeper() {
-		String deleteQuery = "DELETE FROM Dog_keeper WHERE "+ Input.getId() +" = ?";
+		String deleteQuery = "DELETE FROM Dog_keeper WHERE "+ keeper  +" = ?";
 		return deleteQuery;    
 	}
 
 	public String deleteNewOwnerAndDog() {
-		String deleteQuery = "DELETE FROM New_owner WHERE "+ Input.getId()  +" = ?";
+		String deleteQuery = "DELETE FROM New_owner WHERE "+ ownerId  +" = ?";
 		return deleteQuery;    
 	}
 
