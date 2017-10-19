@@ -49,22 +49,27 @@ public class Queries {
 	//End of SELECT Queries
 
 	//INSERT Queries
-	public String insertDog() {
+	/*public String insertDog() {
 		String insertQuery = "INSERT INTO Dog ("+ dogBean.getDogList().get(0) + ", " +
 				dogBean.getDogList().get(1) + ", " +
 				dogBean.getDogList().get(2) + ", " + 
 				dogBean.getDogList().get(3) + " ," 
 				+ dogBean.getDogList().get(4) + ") VALUES (?,?,?,?,?)";
 		return insertQuery;
+	}*/
+	public String insertDog() {
+		String insertQuery = "INSERT INTO Dog (" + dogBean.getDogQueue().toString().replace("[", "").replace("]", "")
+				+ ") VALUES (?,?,?,?,?)";
+		return insertQuery;
 	}
 
 	public String displayDogInsert() {
 		System.out.println("Inserted into 'Dog' table: ");
-		String display = "SELECT "+ dogBean.getDogList().get(0) + ","  + 
+		String display = "SELECT "/*+ dogBean.getDogList().get(0) + ", " */ + 
 				dogBean.getDogList().get(1) + ", " + 
-				dogBean.getDogList().get(2) + "," + 
-				dogBean.getDogList().get(3) + "," + 
-				dogBean.getDogList().get(4) + " FROM Dog";
+				dogBean.getDogList().get(2) + ", " + 
+				dogBean.getDogList().get(3) + 
+				/*dogBean.getDogList().get(4) +*/ " FROM Dog";
 
 		return display;
 	}

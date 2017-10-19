@@ -2,9 +2,12 @@ package com.jdbc.java_bean;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class DogBean {
-	List<String> DogList = new LinkedList<>();
+	List<String> dogList = new LinkedList<>();
+	Queue<String> que = new LinkedList<>();
+	
 	private String keeper = "keeper";
 	private String dogName = "name";
 	private String dogGender = "gender";
@@ -12,12 +15,20 @@ public class DogBean {
 	private String adoptionId = "adoption_id";
 
 	public List<String> getDogList() {
-		DogList.add(keeper);
-		DogList.add(dogName);
-		DogList.add(dogGender);
-		DogList.add(dogRace);
-		DogList.add(adoptionId);
-		return DogList;
+		dogList.add(keeper);
+		dogList.add(dogName);
+		dogList.add(dogGender);
+		dogList.add(dogRace);
+		dogList.add(adoptionId);
+		return dogList;
+	}
+	public Queue<String> getDogQueue() {
+		que.add(keeper);
+		que.add(dogName);
+		que.add(dogGender);
+		que.add(dogRace);
+		que.add(adoptionId);
+		return que;
 	}
 
 	public String getKeeper() {

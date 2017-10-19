@@ -22,7 +22,7 @@ public class NewOwnerBean {
 	}
 
 	public void setNewOwnerList(List<String> newOwnerList) {
-		newOwnerList = newOwnerList;
+		this.newOwnerList = newOwnerList;
 	}
 
 	public String getOwnerId() {

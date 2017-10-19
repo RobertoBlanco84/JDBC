@@ -135,20 +135,15 @@ public class ConnectionHandler  {
 		preparedStmt.executeUpdate();
 		preparedStmtSelect = connection.prepareStatement(queries.displayDogInsert());
 		resultSet = preparedStmtSelect.executeQuery();
-
+		
 		if(resultSet.last()) {
-			String result = resultSet.getString(dogBean.getDogList().get(0) + " " +
+			String result = /*resultSet.getString(dogBean.getDogList().get(0) + " " +*/
 					resultSet.getString(dogBean.getDogList().get(1)) + " " +
 					resultSet.getString(dogBean.getDogList().get(2)) + " " +
-					resultSet.getString(dogBean.getDogList().get(3)) + " " +
-					resultSet.getString(dogBean.getDogList().get(4)));
-			System.out.println(result);
-			/*String result = resultSet.getString(javaBean.getDogList().get(0) + " " +
-			resultSet.getString(javaBean.getDogList().get(1)) + " " +
-			resultSet.getString(javaBean.getDogList().get(2)) + " " +
-			resultSet.getString(javaBean.getDogList().get(3)) + " " +
-			resultSet.getString(javaBean.getDogList().get(4)));
-	System.out.println(result);*/
+					resultSet.getString(dogBean.getDogList().get(3)); //+ " " +
+					/*resultSet.getString(dogBean.getDogList().get(4)));*/
+			//System.out.println(result);
+			System.out.println(resultSet.getString(dogBean.getDogQueue().toString().replace("[", "").replace("]", "")));
 		}
 
 	}
@@ -178,7 +173,8 @@ public class ConnectionHandler  {
 			 */
 			// System.out.println(resultSet.getString(keeperId) + " " +
 			// resultSet.getString(fname) + " " + resultSet.getString(lname));
-			String result = resultSet.getString(dogKeeperBean.getKeeperList().get(1)) + " "
+			String result = resultSet.getString(dogKeeperBean.getKeeperList().get(0)) + " " + 
+					resultSet.getString(dogKeeperBean.getKeeperList().get(1)) + " "
 					+ resultSet.getString(dogKeeperBean.getKeeperList().get(2));
 			System.out.println(result);
 
