@@ -1,34 +1,50 @@
 package com.jdbc.java_bean;
 
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
 public class DogBean {
-	List<String> dogList = new LinkedList<>();
-	Queue<String> que = new LinkedList<>();
+	
+	List<String> list= new LinkedList<>();
+	Queue<String> queue = new LinkedList<>();
+	Deque<String> queues = new LinkedList<>();
 	
 	private String keeper = "keeper";
 	private String dogName = "name";
 	private String dogGender = "gender";
 	private String dogRace = "race";
 	private String adoptionId = "adoption_id";
-
-	public List<String> getDogList() {
-		dogList.add(keeper);
-		dogList.add(dogName);
-		dogList.add(dogGender);
-		dogList.add(dogRace);
-		dogList.add(adoptionId);
-		return dogList;
+	
+	public List<String> getDogList(){
+		list.add(keeper);
+		list.add(dogName);
+		list.add(dogGender);
+		list.add(dogRace);
+		list.add(adoptionId);
+		return list;
 	}
+	
 	public Queue<String> getDogQueue() {
-		que.add(keeper);
-		que.add(dogName);
-		que.add(dogGender);
-		que.add(dogRace);
-		que.add(adoptionId);
-		return que;
+		queue.add(keeper);
+		queue.add(dogName);
+		queue.add(dogGender);
+		queue.add(dogRace);
+		queue.add(adoptionId);
+		/*for(String element : queue) {
+			System.out.println(element + " ");
+		}*/
+		return queue;
+	}
+	
+	public Deque<String> getDogDeque() {
+		queues.add(keeper);
+		queues.add(dogName);
+		queues.add(dogGender);
+		queues.add(dogRace);
+		queues.add(adoptionId);
+		return queues;
 	}
 
 	public String getKeeper() {

@@ -43,17 +43,41 @@ public class ConnectionHandler  {
 		connection = DriverManager.getConnection(url,user,password);
 		statement = connection.createStatement();
 		resultSet = statement.executeQuery(queries.selectDog());
+		/*for(String element : dogBean.getDogQueue()) {
+			System.out.print(element + " ");
+		}*/
 		while(resultSet.next()) {
-			System.out.println(resultSet.getString(dogBean.getDogList().get(0)) + " " +
-					resultSet.getString(dogBean.getDogList().get(1)) + " " +
-					resultSet.getString(dogBean.getDogList().get(2)) + " " +
-					resultSet.getString(dogBean.getDogList().get(3)) + " " +
-					resultSet.getString(dogBean.getDogList().get(4)));
+			/*for(String element : dogBean.getDogQueue()) {
+				System.out.println(resultSet.getString(element.toString()) + " ");
+			}*/
+
+			//System.out.print(resultSet.getString(dogBean.getDogQueue().peek()) + " ");
+
+			//System.out.println(resultSet.getString(dogBean.getDogList().iterator().next()));
+
+			for(int i = 0; i<dogBean.getDogList().size(); i++) {
+				System.out.println(resultSet.getString(dogBean.getDogList().get(i)));
+				for(int j = 0; j<dogBean.getDogList().size(); j++) {
+					System.out.println(resultSet.getString(dogBean.getDogList().get(i+j)));
+				}
+			}
+
+			for (Object s : dogBean.getDogList().toArray()) {
+				System.out.println(resultSet.getString(s.toString()));
+			}
+
+			/*for(String element : dogBean.getDogQueue()) {
+				System.out.print(resultSet.getString(dogBean.getDogQueue().poll()) + " ");
+			}*/
 
 			/*for(int i = 0; i<javaBean.getDogList().size(); i++) {
 				System.out.println(resultSet.getString(javaBean.getDogList().get(i)));
 			}*/
-
+			/*for(String element : dogBean.getDogQueue()) {
+				System.out.print(resultSet.getString(element) + " ");
+			}*/
+			/*System.out.println(resultSet.getString(dogBean.getDogQueue().
+					toString().replace("[", "").replace("]", "") + " ").length());*/
 		}
 	}
 
@@ -63,15 +87,16 @@ public class ConnectionHandler  {
 		resultSet = statement.executeQuery(queries.selectKeeper());
 
 		while(resultSet.next()) {
+			System.out.print(resultSet.getString(dogKeeperBean.getDogKeeperQueue().poll()) + " ");
 			/*	for(int i = 0; i<javaBean.getKeeperList().size(); i++) {
 			System.out.println(resultSet.getString(javaBean.getKeeperList().get(i)));
 				for(int j = 0; j<3; j++) {
 					System.out.println(javaBean.getKeeperList().get(j));
 				}
 			}*/
-			System.out.println(resultSet.getString(dogKeeperBean.getKeeperList().get(0)) + " " +
+			/*System.out.println(resultSet.getString(dogKeeperBean.getKeeperList().get(0)) + " " +
 					resultSet.getString(dogKeeperBean.getKeeperList().get(1)) + " " +
-					resultSet.getString(dogKeeperBean.getKeeperList().get(2)));
+					resultSet.getString(dogKeeperBean.getKeeperList().get(2)));*/
 			/*	for(int i = 0; i<javaBean.getKeeperList().size(); i++) {
 
 			//javaBean.getKeeperList().get(i);
@@ -127,23 +152,27 @@ public class ConnectionHandler  {
 	public void insertDog() throws SQLException {
 		connection = DriverManager.getConnection(url,user,password);
 		preparedStmt = connection.prepareStatement(queries.insertDog());
-		preparedStmt.setInt(1, Input.getId());
+		preparedStmt.setString(1, Input.getId());
 		preparedStmt.setString(2, Input.getDogName());
 		preparedStmt.setString(3, Input.getDogGender());
 		preparedStmt.setString(4, Input.getDogRace());
-		preparedStmt.setInt(5, Input.getAdoptionId());
+		preparedStmt.setString(5, Input.getAdoptionId());
 		preparedStmt.executeUpdate();
 		preparedStmtSelect = connection.prepareStatement(queries.displayDogInsert());
 		resultSet = preparedStmtSelect.executeQuery();
-		
+
+
 		if(resultSet.last()) {
-			String result = /*resultSet.getString(dogBean.getDogList().get(0) + " " +*/
+			/*String result = resultSet.getString(dogBean.getDogList().get(0) + " " +
 					resultSet.getString(dogBean.getDogList().get(1)) + " " +
 					resultSet.getString(dogBean.getDogList().get(2)) + " " +
 					resultSet.getString(dogBean.getDogList().get(3)); //+ " " +
-					/*resultSet.getString(dogBean.getDogList().get(4)));*/
+					resultSet.getString(dogBean.getDogList().get(4)));*/
 			//System.out.println(result);
-			System.out.println(resultSet.getString(dogBean.getDogQueue().toString().replace("[", "").replace("]", "")));
+			//System.out.println(resultSet.getString(dogBean.getDogQueue().peek()));
+			for(String element : dogBean.getDogQueue()) {
+				System.out.print(resultSet.getString(element.toString()) + " ");
+			}
 		}
 
 	}
@@ -156,27 +185,15 @@ public class ConnectionHandler  {
 		preparedStmt.executeUpdate();
 		preparedStmtSelect = connection.prepareStatement(queries.displayKeeperInsert());
 		resultSet = preparedStmtSelect.executeQuery();
-		/*String keeperId = javaBean.getKeeperId();
-		String fname = javaBean.getKeeperFirstName();
-		String lname = javaBean.getKeeperLastName();
-		list.add(keeperId);
-		list.add(fname);
-		list.add(lname);*/
-
 
 		if (resultSet.last()) {
-			/*
-			 * String result = resultSet.getInt(javaBean.getKeeperId()) + " " +
-			 * resultSet.getString(javaBean.getKeeperFirstName()) + " " +
-			 * resultSet.getString(javaBean.getKeeperLastName());
-			 * System.out.println(result);
-			 */
-			// System.out.println(resultSet.getString(keeperId) + " " +
-			// resultSet.getString(fname) + " " + resultSet.getString(lname));
-			String result = resultSet.getString(dogKeeperBean.getKeeperList().get(0)) + " " + 
+			/*String result = resultSet.getString(dogKeeperBean.getKeeperList().get(0)) + " " + 
 					resultSet.getString(dogKeeperBean.getKeeperList().get(1)) + " "
 					+ resultSet.getString(dogKeeperBean.getKeeperList().get(2));
-			System.out.println(result);
+			System.out.println(result);*/
+			for(String element : dogKeeperBean.getDogKeeperQueue()) {
+				System.out.print(resultSet.getString(element.toString()) + " ");
+			}
 
 		}
 	}
@@ -193,11 +210,14 @@ public class ConnectionHandler  {
 		resultSet = preparedStmtSelect.executeQuery();
 
 		if(resultSet.last()) {
-			System.out.println(resultSet.getString(newOwnerBean.getOwnerId()) + " " + 
+			/*System.out.println(resultSet.getString(newOwnerBean.getOwnerId()) + " " + 
 					resultSet.getString(newOwnerBean.getOwnerFirstName()) + " " +
 					resultSet.getString(newOwnerBean.getOwnerLastName()) + " " + 
 					resultSet.getString(newOwnerBean.getSocialSecurityNumber())+ " " + 
-					resultSet.getString(newOwnerBean.getPhoneNumber()));
+					resultSet.getString(newOwnerBean.getPhoneNumber()));*/
+			for(String element : newOwnerBean.getNewOwnerQueue()) {
+				System.out.print(resultSet.getString(element.toString()) + " ");
+			}
 		}
 
 	}
@@ -207,11 +227,11 @@ public class ConnectionHandler  {
 	public void updateDog() throws SQLException {
 		connection = DriverManager.getConnection(url,user,password);
 		preparedStmt = connection.prepareStatement(queries.updateDog());
-		preparedStmt.setInt(1, Input.getId());
+		preparedStmt.setString(1, Input.getId());
 		preparedStmt.setString(2, Input.getDogName());
 		preparedStmt.setString(3, Input.getDogGender());
 		preparedStmt.setString(4, Input.getDogRace());
-		preparedStmt.setInt(5, Input.getAdoptionId());
+		preparedStmt.setString(5, Input.getAdoptionId());
 		int rows = preparedStmt.executeUpdate();
 		System.out.println(rows + " row(s) updated.");
 
@@ -243,7 +263,7 @@ public class ConnectionHandler  {
 	public void deleteKeeper() throws SQLException {
 		connection = DriverManager.getConnection(url,user,password);
 		preparedStmt = connection.prepareStatement(queries.deleteKeeper());
-		preparedStmt.setInt(1, Input.getId());
+		preparedStmt.setString(1, Input.getId());
 		int rows = preparedStmt.executeUpdate();
 		System.out.println(rows+" row(s) deleted.");
 
@@ -252,7 +272,7 @@ public class ConnectionHandler  {
 	public void deleteNewOwnerAndDog() throws SQLException {
 		connection = DriverManager.getConnection(url,user,password);
 		preparedStmt = connection.prepareStatement(queries.deleteNewOwnerAndDog());
-		preparedStmt.setInt(1, Input.getId());
+		preparedStmt.setString(1, Input.getId());
 		int rows = preparedStmt.executeUpdate();
 		System.out.println(rows+" row(s) deleted.");
 

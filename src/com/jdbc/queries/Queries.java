@@ -48,15 +48,7 @@ public class Queries {
 	}
 	//End of SELECT Queries
 
-	//INSERT Queries
-	/*public String insertDog() {
-		String insertQuery = "INSERT INTO Dog ("+ dogBean.getDogList().get(0) + ", " +
-				dogBean.getDogList().get(1) + ", " +
-				dogBean.getDogList().get(2) + ", " + 
-				dogBean.getDogList().get(3) + " ," 
-				+ dogBean.getDogList().get(4) + ") VALUES (?,?,?,?,?)";
-		return insertQuery;
-	}*/
+	//INSERT Queries	
 	public String insertDog() {
 		String insertQuery = "INSERT INTO Dog (" + dogBean.getDogQueue().toString().replace("[", "").replace("]", "")
 				+ ") VALUES (?,?,?,?,?)";
@@ -65,55 +57,42 @@ public class Queries {
 
 	public String displayDogInsert() {
 		System.out.println("Inserted into 'Dog' table: ");
-		String display = "SELECT "/*+ dogBean.getDogList().get(0) + ", " */ + 
-				dogBean.getDogList().get(1) + ", " + 
-				dogBean.getDogList().get(2) + ", " + 
-				dogBean.getDogList().get(3) + 
-				/*dogBean.getDogList().get(4) +*/ " FROM Dog";
-
+		String display = "SELECT " + dogBean.getDogQueue().
+				toString().replace("[", "").replace("]", "") + " FROM dog";
 		return display;
 	}
 
 	public String insertKeeper() {
-		String insertQuery = "INSERT INTO Dog_keeper ("+ dogKeeperBean.getKeeperList().get(1) + ", " 
-				+ dogKeeperBean.getKeeperList().get(2) + ") VALUES (?,?)";
+		String insertQuery = "INSERT INTO Dog_keeper ("+ dogKeeperBean.getDogKeeperQueue().
+				toString().replace("[", "").replace("]", "") + ") VALUES (?,?)";
 		return insertQuery;
 	}
 
 	public String displayKeeperInsert() {
 		System.out.println("Inserted into 'Dog_keeper' table: ");
-		String display = "SELECT "+ dogKeeperBean.getKeeperList().get(0) + "," + 
-				dogKeeperBean.getKeeperList().get(1) + ", " + 
-				dogKeeperBean.getKeeperList().get(2) + " FROM Dog_keeper";
+		String display = "SELECT " + dogKeeperBean.getDogKeeperQueue().
+				toString().replace("[", "").replace("]", "") +" FROM Dog_keeper";
 		return display;
 	}
 
 	public String insertNewOwner() {
-		String insertQuery = "INSERT INTO New_owner (" + newOwnerBean.getNewOwnerList().get(1) + ", " + 
-				newOwnerBean.getNewOwnerList().get(2) + ", " + 
-				newOwnerBean.getNewOwnerList().get(3) + ", " +
-				newOwnerBean.getNewOwnerList().get(4) + ") VALUES(?,?,?,?)";
+		String insertQuery = "INSERT INTO New_owner ("+ newOwnerBean.getNewOwnerQueue().
+				toString().replace("[", "").replace("]", "") +") VALUES(?,?,?,?)";
 		return insertQuery;
 	}
 
 	public String displayNewOwner() {
 		System.out.println("Inserted into 'New_owner' table: ");
-		String display = "SELECT "+ newOwnerBean.getNewOwnerList().get(0) + "," + 
-				newOwnerBean.getNewOwnerList().get(1) + ", " + 
-				newOwnerBean.getNewOwnerList().get(2)+ "," + 
-				newOwnerBean.getNewOwnerList().get(3) 
-				+ " ," + phone_number+ " FROM New_owner";
+		String display = "SELECT "+newOwnerBean.getNewOwnerQueue().
+				toString().replace("[", "").replace("]", "") +" FROM New_owner";
 		return display;
 	}
 	//End of INSERT Queries
 
 	//UPDATE Queries
 	public String updateDog() {
-		String updateQuery = "UPDATE Dog SET "+dogBean.getDogList().get(0)+"=?, " +
-				dogBean.getDogList().get(1) + "=?, " +
-				dogBean.getDogList().get(2) + "=?,"  + 
-				dogBean.getDogList().get(3) + "=?, " + 
-				dogBean.getDogList().get(4) + "=? WHERE keeper="+Input.getId()+"";
+	
+		String updateQuery = "UPDATE Dog SET "+ dogBean.getDogDeque() +" = ? WHERE keeper="+Input.getId()+"";
 		return updateQuery;    
 	}
 

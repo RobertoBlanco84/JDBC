@@ -2,9 +2,10 @@ package com.jdbc.java_bean;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class DogKeeperBean {
-
+	Queue<String> queue = new LinkedList<>();
 	List<String> KeeperList = new LinkedList<>();
 	private String keeperId = "keeper_id";
 	private String keeperFirstName = "fname";
@@ -16,6 +17,13 @@ public class DogKeeperBean {
 		KeeperList.add(keeperLastName);
 		return KeeperList;
 	}
+	public Queue<String> getDogKeeperQueue() {
+		//queue.add(keeperId);
+		queue.add(keeperFirstName);
+		queue.add(keeperLastName);	
+		return queue;
+	}
+
 
 	public void setKeeperList(List<String> KeeperList) {
 		this.KeeperList = KeeperList;

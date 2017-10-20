@@ -1,11 +1,16 @@
 package com.jdbc.java_bean;
 
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class NewOwnerBean {
 
 	List<String> newOwnerList = new LinkedList<>();
+	Queue<String> queue = new LinkedList<>();
+	
+	Deque<String> deQue = new LinkedList<>();	
 	private String ownerId = "owner_id";
 	private String ownerFirstName = "fname";
 	private String ownerLastName = "lname";
@@ -19,6 +24,15 @@ public class NewOwnerBean {
 		newOwnerList.add(socialSecurityNumber);
 		newOwnerList.add(phoneNumber);
 		return newOwnerList;
+	}
+	
+	public Queue<String> getNewOwnerQueue(){
+		//newOwnerList.add(ownerId);
+		queue.add(ownerFirstName);
+		queue.add(ownerLastName);
+		queue.add(socialSecurityNumber);
+		queue.add(phoneNumber);
+		return queue;
 	}
 
 	public void setNewOwnerList(List<String> newOwnerList) {

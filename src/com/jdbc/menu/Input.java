@@ -9,7 +9,7 @@ public class Input {
 
 	private static String surName;
 	private static String lastName;
-	private static int Id;
+	private static String Id;
 	private static String ssNumber;
 	private static String phoneNumber;
 
@@ -17,13 +17,13 @@ public class Input {
 	private static String updateName;
 	private static String gender;
 	private static String race;
-	private static int adoptionId;
+	private static String adoptionId;
 
 
 	ConnectionHandler connectionHandler = new ConnectionHandler();
 	Scanner scan = new Scanner(System.in);
 	boolean isActive = true;
-	String menu = " Dog_shelter Menu \n What do you want to do? \n 1.Select \n 2.Insert "
+	String menu = "\n Dog_shelter Menu \n What do you want to do? \n 1.Select \n 2.Insert "
 			+ "\n 3.Update \n 4.Delete \n 5.Search \n 6.Dog Count \n 7.Exit \n";
 
 	public void Menu()  {
@@ -71,7 +71,7 @@ public class Input {
 					option = scan.next();
 					if(option.equals("1")) {
 						System.out.print("Enter a keeper Id: ");
-						Id = scan.nextInt();
+						Id = scan.next();
 						System.out.print("Enter a dog name: ");
 						dogName = scan.next();
 						System.out.print("Enter a gender: ");
@@ -79,7 +79,7 @@ public class Input {
 						System.out.print("Enter a race: ");
 						race = scan.next();
 						System.out.print("Enter a adoption id: ");
-						adoptionId = scan.nextInt();
+						adoptionId = scan.next();
 						connectionHandler.insertDog();
 					}
 					if(option.equals("2")) {
@@ -113,7 +113,7 @@ public class Input {
 					option = scan.next();
 					if(option.equals("1")) {
 						System.out.print("Update dog WHERE keeper: ");
-						Id = scan.nextInt();
+						Id = scan.next();
 						System.out.print("Enter a dog name: ");
 						dogName = scan.next();
 						System.out.print("Enter a gender: ");
@@ -121,12 +121,12 @@ public class Input {
 						System.out.print("Enter a race: ");
 						race = scan.next();
 						System.out.print("Enter a adoption id: ");
-						adoptionId = scan.nextInt();
+						adoptionId = scan.next();
 						connectionHandler.updateDog();
 					}
 					if(option.equals("2")) {
 						System.out.println("Update keeper WHERE keeper_id: ");
-						Id = scan.nextInt();
+						Id = scan.next();
 						System.out.println("Update surname:");
 						surName = scan.next();
 						System.out.println("Update lastname");
@@ -135,7 +135,7 @@ public class Input {
 					}
 					if(option.equals("3")) {
 						System.out.print("Update New_owner WHERE owner_id: ");
-						Id = scan.nextInt();
+						Id = scan.next();
 						System.out.print("Update surname: ");
 						surName = scan.next();
 						System.out.print("Update lastname: ");
@@ -158,12 +158,12 @@ public class Input {
 					option = scan.next();
 					if(option.equals("1")) {
 						System.out.println("Enter a keeper_id");
-						Id = scan.nextInt();
+						Id = scan.next();
 						connectionHandler.deleteKeeper();
 					}
 					if(option.equals("2")) {
 						System.out.println("Enter a owner_id");
-						Id = scan.nextInt();
+						Id = scan.next();
 						connectionHandler.deleteNewOwnerAndDog();
 					}
 					if(option.equals("3")) {
@@ -173,7 +173,7 @@ public class Input {
 				}
 				if (option.equals("5")){
 					System.out.println("Search in table 'New_owner' by id: ");	
-					Id = scan.nextInt();
+					Id = scan.next();
 					connectionHandler.searchNewOwner();
 				}
 				if (option.equals("6")){
@@ -201,7 +201,7 @@ public class Input {
 		return lastName;
 	}
 
-	public static int getId() {
+	public static String getId() {
 		return Id;
 	}
 
@@ -217,7 +217,7 @@ public class Input {
 	public static String getDogRace() {
 		return race;
 	}
-	public static int getAdoptionId() {
+	public static String getAdoptionId() {
 		return adoptionId;
 	}
 
