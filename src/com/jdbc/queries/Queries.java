@@ -12,19 +12,6 @@ public class Queries {
 	DogKeeperBean dogKeeperBean = new DogKeeperBean();
 	DeletedOwnerBean deletedOwnerBean = new DeletedOwnerBean();
 
-	private String keeper= dogKeeperBean.getKeeperId();
-	private String dogName = dogBean.getDogName();
-	private String dogGender = dogBean.getDogGender();
-	private String dogRace = dogBean.getDogRace();
-	private String adoptionId = dogBean.getAdoptionId();
-	private String keeperId = dogKeeperBean.getKeeperId();
-	private String keeperFirstName = dogKeeperBean.getKeeperFirstName();
-	private String keeperLastName = dogKeeperBean.getKeeperLastName();
-	private String ownerId = newOwnerBean.getOwnerId();
-	private String ownerFirstName = newOwnerBean.getOwnerFirstName();
-	private String ownerLastName = newOwnerBean.getOwnerLastName();
-	private String socialSecurityNumber = newOwnerBean.getSocialSecurityNumber();
-	private String phone_number = newOwnerBean.getPhoneNumber();
 
 	//SELECT Queries
 	public String selectDog() {
@@ -33,7 +20,8 @@ public class Queries {
 	}
 
 	public String selectKeeper() {
-		String selectQuery = "SELECT * FROM dog_keeper";
+		String selectQuery = "SELECT " + dogKeeperBean.getKeeperList().toString().replace("[", "").replace("]", "") +" FROM dog_keeper";
+		//String selectQuery = "SELECT " + dogKeeperBean.getDogKeeperQueue().toString().replace("[", "").replace("]", "") + " FROM dog_keeper";
 		return selectQuery;
 	}
 
@@ -91,35 +79,45 @@ public class Queries {
 
 	//UPDATE Queries
 	public String updateDog() {
-	
-		String updateQuery = "UPDATE Dog SET "+ dogBean.getDogDeque() +" = ? WHERE keeper="+Input.getId()+"";
+		String updateQuery = "UPDATE Dog SET "+ 
+				dogBean.getDogName() +" = ?, "+ 
+				dogBean.getDogGender() +"=?, "+
+				dogBean.getDogRace()+"=?, " +
+				dogBean.getAdoptionId()+"=?  WHERE keeper="+Input.getId();
+		//String updateQuery = "UPDATE Dog SET " + dogBean.getDogList()
 		return updateQuery;    
 	}
 
 	public String updateKeeper() {
-		String updateQuery = "UPDATE Dog_keeper SET "+ dogKeeperBean.getKeeperList().get(1) +"=?," +
+		/*String updateQuery = "UPDATE Dog_keeper SET "+ dogKeeperBean.getKeeperList().get(1) +"=?," +
 				dogKeeperBean.getKeeperList().get(2) 
-				+"=? WHERE keeper_id="+Input.getId()+"";
+				+"=? WHERE keeper_id="+Input.getId();*/
+		String updateQuery = "Update Dog_keeper SET " + dogKeeperBean.getKeeperFirstName() + "=?, "  +
+				dogKeeperBean.getKeeperLastName() + "=? WHERE keeper_id="+Input.getId() ;
 		return updateQuery;    
 	}
 
 	public String updateNewOwner() {
-		String updateQuery = "UPDATE New_owner SET "+newOwnerBean.getNewOwnerList().get(1)+"=?, " + 
+		/*String updateQuery = "UPDATE New_owner SET "+newOwnerBean.getNewOwnerList().get(1)+"=?, " + 
 				newOwnerBean.getNewOwnerList().get(2) +"=?, " 
 				+newOwnerBean.getNewOwnerList().get(3) +"=?, "
-				+newOwnerBean.getNewOwnerList().get(4)+"=? WHERE owner_id="+Input.getId()+"";
+				+newOwnerBean.getNewOwnerList().get(4)+"=? WHERE owner_id="+Input.getId()+"";*/
+		String updateQuery = "UPDATE New_owner SET " + newOwnerBean.getOwnerFirstName() + "=?, " +
+				newOwnerBean.getOwnerLastName() + "=?, " +
+				newOwnerBean.getSocialSecurityNumber() + "=?, " +
+				newOwnerBean.getPhoneNumber() + "=? WHERE owner_id =" +Input.getId();
 		return updateQuery;    
 	}
 	//End of UPDATE queries
 
 	//DELETE Queries
 	public String deleteKeeper() {
-		String deleteQuery = "DELETE FROM Dog_keeper WHERE "+ keeper  +" = ?";
+		String deleteQuery = "DELETE FROM Dog_keeper WHERE "+ dogKeeperBean.getKeeperId()  +" = ?";
 		return deleteQuery;    
 	}
 
 	public String deleteNewOwnerAndDog() {
-		String deleteQuery = "DELETE FROM New_owner WHERE "+ ownerId  +" = ?";
+		String deleteQuery = "DELETE FROM New_owner WHERE "+ newOwnerBean.getOwnerId()  +" = ?";
 		return deleteQuery;    
 	}
 

@@ -32,9 +32,6 @@ public class DogBean {
 		queue.add(dogGender);
 		queue.add(dogRace);
 		queue.add(adoptionId);
-		/*for(String element : queue) {
-			System.out.println(element + " ");
-		}*/
 		return queue;
 	}
 	
