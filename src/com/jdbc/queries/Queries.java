@@ -15,7 +15,7 @@ public class Queries {
 
 	//SELECT Queries
 	public String selectDog() {
-		String selectQuery = "SELECT * FROM dog";
+		String selectQuery = "SELECT " + dogBean.getDogList().toString().replace("[", "").replace("]", "") +" FROM dog";
 		return selectQuery;
 	}
 

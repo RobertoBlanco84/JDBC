@@ -43,6 +43,7 @@ public class DogBean {
 		queues.add(adoptionId);
 		return queues;
 	}
+	
 
 	public String getKeeper() {
 		return keeper;
