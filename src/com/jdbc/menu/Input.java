@@ -18,7 +18,6 @@ public class Input {
 	private static String race;
 	private static String adoptionId;
 
-
 	ConnectionHandler connectionHandler = new ConnectionHandler();
 	Scanner scan = new Scanner(System.in);
 	boolean isActive = true;
@@ -36,7 +35,7 @@ public class Input {
 						+ " 5.Back to Menu");
 				option = scan.next();
 				if(option.equals("1")) {
-					connectionHandler.selectDogConnection();
+					connectionHandler.DogConnection();
 					/*System.out.println(menu);
 					option = scan.next();*/
 				}
@@ -193,7 +192,6 @@ public class Input {
 
 
 		}
-
 
 	}
 

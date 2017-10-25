@@ -1,5 +1,13 @@
 package com.jdbc.connection;
 
+/**
+ * Utility class that contains separated ResultSet methods for
+ * each query
+ * 
+ * @author RobertoBlanco 
+ * @since 2017-10-25
+ */
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -9,13 +17,18 @@ import com.jdbc.java_bean.DogKeeperBean;
 import com.jdbc.java_bean.NewOwnerBean;
 
 public class ResultSetUtil {
-	static DogBean dogBean = new DogBean();
-	static DogKeeperBean dogKeeperBean = new DogKeeperBean();
-	static NewOwnerBean newOwnerBean = new NewOwnerBean();
-	static DeletedOwnerBean deletedOwnerBean = new DeletedOwnerBean();
+	private static DogBean dogBean = new DogBean();
+	private static DogKeeperBean dogKeeperBean = new DogKeeperBean();
+	private static NewOwnerBean newOwnerBean = new NewOwnerBean();
+	private static DeletedOwnerBean deletedOwnerBean = new DeletedOwnerBean();
 	ResultSet resultSet;
 
-	//SELECT display methods
+	
+	/**
+	 * Loops through the resultSet and getDogList() and then displays it in the console  
+	 * @param resultSet
+	 * @return the parameter resultSet
+	 */
 	public static final ResultSet displayDogResult(ResultSet resultSet) {
 		try {
 			while (resultSet.next()) {
@@ -32,7 +45,12 @@ public class ResultSetUtil {
 		return resultSet;
 
 	}
-
+	
+	/**
+	 * Loops through the resultSet and getKeeperList() and then displays it in the console 
+	 * @param resultSet
+	 * @return the parameter resulSet
+	 */
 	public static final ResultSet displayDogKeeperResult(ResultSet resultSet) {
 		try {
 			while (resultSet.next()) {
@@ -48,7 +66,12 @@ public class ResultSetUtil {
 
 		return resultSet;
 	}
-
+	
+	/**
+	 * Loops through the resultSet and getNewOwnerList() and then displays it in the console 
+	 * @param resultSet
+	 * @return the parameter resultSet
+	 */
 	public static final ResultSet displayNewOwnerResult(ResultSet resultSet) {
 		try {
 			while (resultSet.next()) {
@@ -64,7 +87,12 @@ public class ResultSetUtil {
 
 		return resultSet;
 	}
-
+	
+	/**
+	 * Loops through the resultSet and getDeletedOwnerList() and then displays it in the console 
+	 * @param resultSet
+	 * @return
+	 */
 	public static final ResultSet displayDeletedOwnerResult(ResultSet resultSet) {
 		try {
 			while (resultSet.next()) {
@@ -81,7 +109,13 @@ public class ResultSetUtil {
 		return resultSet;
 	}
 	//END OF SELECT display methods
-	public static final ResultSet displayInsertDogResult(ResultSet resultSet) {
+	
+	/**
+	 * Displays last resultSet in getDogQueue()
+	 * @param resultSet
+	 * @return parameter resultSet
+	 */
+	public static final ResultSet displayLastDogInsertion(ResultSet resultSet) {
 		try {
 			if(resultSet.last()) {
 				for(String element : dogBean.getDogQueue()) {
@@ -97,7 +131,11 @@ public class ResultSetUtil {
 
 		return resultSet;
 	}
-
+	/**
+	 * Displays last resultSet in getDogKeeperQueue()
+	 * @param resultSet
+	 * @return parameter resultSet
+	 */
 	public static final ResultSet displayInsertKeeperResult(ResultSet resultSet) {
 		try {
 			if(resultSet.last()) {
@@ -113,7 +151,12 @@ public class ResultSetUtil {
 
 		return resultSet;
 	}
-
+	
+	/**
+	 * Displays last resultSet in getNewOwnerQueue()
+	 * @param resultSet
+	 * @return parameter resultSet
+	 */
 	public static final ResultSet displayInsertNewOwnerResult(ResultSet resultSet) {
 		try {
 			if(resultSet.last()) {
@@ -129,7 +172,12 @@ public class ResultSetUtil {
 
 		return resultSet;
 	}
-
+	
+	/**
+	 * Displays resultSet in getNewOwnerList() if exists, else shows message
+	 * @param resultSet
+	 * @return parameter resultSet
+	 */
 	public static final ResultSet displaySearchtNewOwnerResult(ResultSet resultSet) {
 		try {
 			if(resultSet.next()) {

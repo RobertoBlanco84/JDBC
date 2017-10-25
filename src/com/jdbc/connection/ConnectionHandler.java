@@ -1,5 +1,12 @@
 package com.jdbc.connection;
 
+/**
+* This class implements JDBC resources (connection,statement,resultSet)
+* as one object of the type ConnectionHandler in order to skip 
+* creating a new JDBC resources with each query that exists in Queries class
+* @author marianna and RobertoBlanco
+*/
+
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,6 +18,7 @@ import java.sql.PreparedStatement;
 import com.jdbc.menu.Input;
 import com.jdbc.queries.Queries;
 
+
 public class ConnectionHandler  {
 
 	private Queries queries = new Queries();
@@ -18,17 +26,20 @@ public class ConnectionHandler  {
 	private String user = "root";
 	private String password = "";
 
-	Connection connection;
-	PreparedStatement preparedStmt;
-	PreparedStatement preparedStmtSelect;
-	Statement statement;
-	CallableStatement callableStatement;
-	ResultSet resultSet;
-
-	//ÄNDRA METOD NAMN!!!	
+	private Connection connection;
+	private PreparedStatement preparedStmt;
+	private PreparedStatement preparedStmtSelect;
+	private Statement statement;
+	private CallableStatement callableStatement;
+	private ResultSet resultSet;
 
 	// SELECT connections
-	public void selectDogConnection() {
+	/**
+	 * Open up connection to DriverManager, creates statement and executes query selectDog().
+	 * Catches error, if  occurs, and prints out stack trace.
+	 * Call methods close() to close down connection.
+	 */
+	public void DogConnection() {
 		try {
 			connection = DriverManager.getConnection(url,user,password);
 			statement = connection.createStatement();
@@ -44,7 +55,12 @@ public class ConnectionHandler  {
 			try { connection.close(); } catch (Exception e) { /* ignored */ }
 		}
 	}
-
+	
+	/**
+	 * Open up connection to DriverManager, creates statement and executes query selectKeeper().
+	 * Catches error, if  occurs, and prints out stack trace.
+	 * Calls methods close() to close down connection.
+	 */
 	public void selectKeeperConnection() {
 		try {
 			connection = DriverManager.getConnection(url,user,password);
@@ -61,7 +77,12 @@ public class ConnectionHandler  {
 			try { connection.close(); } catch (Exception e) { /* ignored */ }
 		}
 	}
-
+	
+	/**
+	 * Open up connection to DriverManager, creates statement and executes query SelectNewOwner().
+	 * Catches error, if  occurs, and prints out stack trace.
+	 * Call methods close() to close down connection.
+	 */
 	public void selectNewOwnerConnection(){
 		try {
 			connection = DriverManager.getConnection(url,user,password);
@@ -78,7 +99,12 @@ public class ConnectionHandler  {
 			try { connection.close(); } catch (Exception e) { /* ignored */ }
 		}
 	}
-
+	
+	/**
+	 * Open up connection to DriverManager, creates statement and executes query selectDeletedOwners().
+	 * Catches error, if  occurs, and prints out stack trace.
+	 * Calls methods close() to close down connection
+	 */
 	public void selectDeletedOwnersConnection(){
 		try {
 			connection = DriverManager.getConnection(url,user,password);
@@ -98,6 +124,11 @@ public class ConnectionHandler  {
 	//End of SELECT connections
 
 	//INSERT connections
+	/**
+	 * Open up connection to DriverManager, creates prepared statement and execute queries insertDog() and displayDog().
+	 * Catches error, if  occurs, and prints out stack trace.
+	 * Calls methods close() to close down connection
+	 */
 	public void insertDogConnection(){
 		try {
 			connection = DriverManager.getConnection(url,user,password);
@@ -110,7 +141,7 @@ public class ConnectionHandler  {
 			preparedStmt.executeUpdate();
 			preparedStmtSelect = connection.prepareStatement(queries.displayDogInsert());
 			resultSet = preparedStmtSelect.executeQuery();
-			ResultSetUtil.displayInsertDogResult(resultSet);
+			ResultSetUtil.displayLastDogInsertion(resultSet);
 
 		}
 		catch(SQLException e) {
@@ -123,7 +154,13 @@ public class ConnectionHandler  {
 			try { connection.close(); } catch (Exception e) { /* ignored */ }
 		}
 	}
-
+	
+	/**
+	 * Open up connection to DriverManager, creates prepared statement and execute queries 
+	 * insertKeeper() and displayKeeperInsert().
+	 * Catches error, if  occurs, and prints out stack trace.
+	 * Calls methods close() to close down connection
+	 */
 	public void insertKeeperConnection(){
 		try {
 			connection = DriverManager.getConnection(url,user,password);
@@ -146,7 +183,13 @@ public class ConnectionHandler  {
 			try { connection.close(); } catch (Exception e) { /* ignored */ }
 		}
 	}
-
+	
+	/**
+	 * Open up connection to DriverManager, creates prepared statement and execute queries 
+	 * insertNewOwner() and displayNewOwner().
+	 * Catches error, if  occurs, and prints out stack trace.
+	 * Calls methods close() to close down connection
+	 */
 	public void insertNewOwnerConnection() {
 		try {
 			connection = DriverManager.getConnection(url,user,password);	
@@ -173,6 +216,11 @@ public class ConnectionHandler  {
 	//End of Insert connections
 
 	//Update connections
+	/**
+	 * Open up connection to DriverManager, creates prepared statement and execute query updateDog().
+	 * Catches error, if  occurs, and prints out stack trace.
+	 * Calls methods close() to close down connection
+	 */
 	public void updateDogConnection(){
 		try {
 			connection = DriverManager.getConnection(url,user,password);
@@ -193,7 +241,12 @@ public class ConnectionHandler  {
 		}
 
 	}
-
+	
+	/**
+	 * Open up connection to DriverManager, creates prepared statement and execute query updateKeeper().
+	 * Catches error, if  occurs, and prints out stack trace.
+	 * Calls methods close() to close down connection
+	 */
 	public void updateKeeperConnection() {
 		try {
 			connection = DriverManager.getConnection(url,user,password);
@@ -212,6 +265,12 @@ public class ConnectionHandler  {
 		}
 
 	}
+	
+	/**
+	 * Open up connection to DriverManager, creates prepared statement and execute query updateNewOwner().
+	 * Catches error, if  occurs, and prints out stack trace.
+	 * Calls methods close() to close down connection
+	 */
 	public void updateNewOwnerConnection() {
 		try {
 			connection = DriverManager.getConnection(url,user,password);
@@ -234,6 +293,11 @@ public class ConnectionHandler  {
 	//End of UPDATE connections
 
 	//DELETE connections
+	/**
+	 * Open up connection to DriverManager, creates prepared statement and execute query deleteKeeper().
+	 * Catches error, if  occurs, and prints out stack trace.
+	 * Calls methods close() to close down connection
+	 */
 	public void deleteKeeperConnection(){
 		try {
 			connection = DriverManager.getConnection(url,user,password);
@@ -250,7 +314,12 @@ public class ConnectionHandler  {
 			try { connection.close(); } catch (Exception e) { /* ignored */ }
 		}
 	}
-
+	
+	/**
+	 * Open up connection to DriverManager, creates prepared statement and execute query deleteNewOwnerAndDog().
+	 * Catches error, if  occurs, and prints out stack trace.
+	 * Calls methods close() to close down connection
+	 */
 	public void deleteNewOwnerAndDogConnection(){
 		try {
 			connection = DriverManager.getConnection(url,user,password);
@@ -270,6 +339,11 @@ public class ConnectionHandler  {
 	//End of DELETE connections
 
 	//Stored procedure connection
+	/**
+	 * Open up connection to DriverManager, creates callable statement and calls stored procedure dog_count().
+	 * Catches error, if  occurs, and prints out stack trace.
+	 * Calls methods close() to close down connection
+	 */
 	public void dogCountConnection() {
 		try {
 			connection = DriverManager.getConnection(url,user,password);		
@@ -290,6 +364,11 @@ public class ConnectionHandler  {
 	}
 
 	//Search connection
+	/**
+	 *  Open up connection to DriverManager, creates prepared statement and execute query searchNewOwner().
+	 * Catches error, if  occurs, and prints out stack trace.
+	 * Calls methods close() to close down connection
+	 */
 	public void searchNewOwnerConnection(){
 		try {
 			connection = DriverManager.getConnection(url,user,password);
