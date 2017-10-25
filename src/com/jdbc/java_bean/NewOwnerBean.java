@@ -35,7 +35,7 @@ public class NewOwnerBean {
 	
 	/**
 	 * A Queue containing all "New_owner" table's attributes
-	 * , except first since it is auto increment,
+	 * , except first attribute since it is auto increment,
 	 * @return a queue, one row, in  "New_owner"
 	 */
 	public Queue<String> getNewOwnerQueue(){
