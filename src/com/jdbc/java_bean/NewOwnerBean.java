@@ -4,6 +4,7 @@ package com.jdbc.java_bean;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+
 /**
  * A Javabean class for the entity table "NewOwnerBean",
  * containing private fields with the Dog table columns' name
