@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Queue;
 
 public class DogKeeperBean {
+	
 	Queue<String> queue = new LinkedList<>();
 	List<String> KeeperList = new LinkedList<>();
 	private String keeperId = "keeper_id";
@@ -24,33 +25,16 @@ public class DogKeeperBean {
 		return queue;
 	}
 
-
-	public void setKeeperList(List<String> KeeperList) {
-		this.KeeperList = KeeperList;
-	}
-
 	public String getKeeperId() {
 		return keeperId;
-	}
-
-	public void setKeeperId(String keeperId) {
-		this.keeperId = keeperId;
 	}
 
 	public String getKeeperFirstName() {
 		return keeperFirstName;
 	}
 
-	public void setKeeperFirstName(String keeperFirstName) {
-		this.keeperFirstName = keeperFirstName;
-	}
-
 	public String getKeeperLastName() {
 		return keeperLastName;
-	}
-
-	public void setKeeperLastName(String keeperLastName) {
-		this.keeperLastName = keeperLastName;
 	}
 
 }

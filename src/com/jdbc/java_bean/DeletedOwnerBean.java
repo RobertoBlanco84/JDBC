@@ -12,7 +12,6 @@ public class DeletedOwnerBean {
 	private String phoneNumber = "phone_number";
 	private String dateTime = "date_time";
 
-
 	public List<String> getDeletedOwnerList() {
 		deletedOwnerList.add(ownerId);
 		deletedOwnerList.add(ownerFirstName);
@@ -23,56 +22,29 @@ public class DeletedOwnerBean {
 		return deletedOwnerList;
 	}
 
-	public void setDeletedOwnerList(List<String> deletedOwnerList) {
-		this.deletedOwnerList = deletedOwnerList;
-	}
-
 	public String getOwnerId() {
 		return ownerId;
-	}
-
-	public void setOwnerId(String ownerId) {
-		this.ownerId = ownerId;
 	}
 
 	public String getOwnerFirstName() {
 		return ownerFirstName;
 	} 
 
-	public void setOwnerFirstName(String ownerFirstName) {
-		this.ownerFirstName = ownerFirstName;
-	}
-
 	public String getOwnerLastName() {
 		return ownerLastName;
-	}
-
-	public void setOwnerLastName(String ownerLastName) {
-		this.ownerLastName = ownerLastName;
 	}
 
 	public String getSocialSecurityNumber() {
 		return socialSecurityNumber;
 	}
 
-	public void setSocialSecurityNumber(String socialSecurityNumber) {
-		this.socialSecurityNumber = socialSecurityNumber;
-	}
-
 	public String getPhoneNumber() {
 		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
 	}
 
 	public String getDateTime() {
 		return dateTime;
 	}
-
-	public void setDateTime(String dateTime) {
-		this.dateTime = dateTime;
-	}
+	
 
 }

@@ -7,11 +7,11 @@ import com.jdbc.java_bean.NewOwnerBean;
 import com.jdbc.menu.Input;
 
 public class Queries {
+	
 	NewOwnerBean newOwnerBean = new NewOwnerBean();
 	DogBean dogBean = new DogBean();
 	DogKeeperBean dogKeeperBean = new DogKeeperBean();
 	DeletedOwnerBean deletedOwnerBean = new DeletedOwnerBean();
-
 
 	//SELECT Queries
 	public String selectDog() {
@@ -84,24 +84,17 @@ public class Queries {
 				dogBean.getDogGender() +"=?, "+
 				dogBean.getDogRace()+"=?, " +
 				dogBean.getAdoptionId()+"=?  WHERE keeper="+Input.getId();
-		//String updateQuery = "UPDATE Dog SET " + dogBean.getDogList()
+
 		return updateQuery;    
 	}
-
+	
 	public String updateKeeper() {
-		/*String updateQuery = "UPDATE Dog_keeper SET "+ dogKeeperBean.getKeeperList().get(1) +"=?," +
-				dogKeeperBean.getKeeperList().get(2) 
-				+"=? WHERE keeper_id="+Input.getId();*/
 		String updateQuery = "Update Dog_keeper SET " + dogKeeperBean.getKeeperFirstName() + "=?, "  +
 				dogKeeperBean.getKeeperLastName() + "=? WHERE keeper_id="+Input.getId() ;
 		return updateQuery;    
 	}
 
 	public String updateNewOwner() {
-		/*String updateQuery = "UPDATE New_owner SET "+newOwnerBean.getNewOwnerList().get(1)+"=?, " + 
-				newOwnerBean.getNewOwnerList().get(2) +"=?, " 
-				+newOwnerBean.getNewOwnerList().get(3) +"=?, "
-				+newOwnerBean.getNewOwnerList().get(4)+"=? WHERE owner_id="+Input.getId()+"";*/
 		String updateQuery = "UPDATE New_owner SET " + newOwnerBean.getOwnerFirstName() + "=?, " +
 				newOwnerBean.getOwnerLastName() + "=?, " +
 				newOwnerBean.getSocialSecurityNumber() + "=?, " +

@@ -16,7 +16,6 @@ import com.jdbc.java_bean.NewOwnerBean;
 import com.jdbc.menu.Input;
 import com.jdbc.queries.Queries;
 
-
 public class ConnectionHandler  {
 
 	private DogBean dogBean = new DogBean();
@@ -43,17 +42,22 @@ public class ConnectionHandler  {
 			connection = DriverManager.getConnection(url,user,password);
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery(queries.selectDog());
-			
+
 			while (resultSet.next()) {
 				for (int j = 0; j < 5 ; j++) {
 					System.out.print(resultSet.getString(dogBean.getDogList().get(j)) + " ");
 				} 
 				System.out.println();
 			}
-			
+
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
+		}
+		finally {
+			try { resultSet.close(); } catch (Exception e) { /* ignored */ }
+			try { statement.close(); } catch (Exception e) { /* ignored */ }
+			try { connection.close(); } catch (Exception e) { /* ignored */ }
 		}
 	}
 
@@ -62,7 +66,7 @@ public class ConnectionHandler  {
 			connection = DriverManager.getConnection(url,user,password);
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery(queries.selectKeeper());
-			
+
 			while (resultSet.next()) {
 				for (int j = 0; j < 3 ; j++) {
 					System.out.print(resultSet.getString(dogKeeperBean.getKeeperList().get(j)) + " ");
@@ -73,6 +77,11 @@ public class ConnectionHandler  {
 		catch(SQLException e) {
 			e.printStackTrace();
 		}
+		finally {
+			try { resultSet.close(); } catch (Exception e) { /* ignored */ }
+			try { statement.close(); } catch (Exception e) { /* ignored */ }
+			try { connection.close(); } catch (Exception e) { /* ignored */ }
+		}
 	}
 
 	public void selectNewOwner(){
@@ -80,7 +89,7 @@ public class ConnectionHandler  {
 			connection = DriverManager.getConnection(url,user,password);
 			statement = connection.createStatement();	
 			resultSet = statement.executeQuery(queries.selectNewOwner());
-			
+
 			while (resultSet.next()) {
 				for (int j = 0; j < 5; j++) {
 					System.out.print(resultSet.getString(newOwnerBean.getNewOwnerList().get(j)) + " ");
@@ -90,6 +99,11 @@ public class ConnectionHandler  {
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
+		}
+		finally {
+			try { resultSet.close(); } catch (Exception e) { /* ignored */ }
+			try { statement.close(); } catch (Exception e) { /* ignored */ }
+			try { connection.close(); } catch (Exception e) { /* ignored */ }
 		}
 	}
 
@@ -109,6 +123,11 @@ public class ConnectionHandler  {
 		catch(SQLException e) {
 			e.printStackTrace();
 		}
+		finally {
+			try { resultSet.close(); } catch (Exception e) { /* ignored */ }
+			try { statement.close(); } catch (Exception e) { /* ignored */ }
+			try { connection.close(); } catch (Exception e) { /* ignored */ }
+		}
 	}
 	//End of SELECT connections
 
@@ -126,15 +145,7 @@ public class ConnectionHandler  {
 			preparedStmtSelect = connection.prepareStatement(queries.displayDogInsert());
 			resultSet = preparedStmtSelect.executeQuery();
 
-
 			if(resultSet.last()) {
-				/*String result = resultSet.getString(dogBean.getDogList().get(0) + " " +
-					resultSet.getString(dogBean.getDogList().get(1)) + " " +
-					resultSet.getString(dogBean.getDogList().get(2)) + " " +
-					resultSet.getString(dogBean.getDogList().get(3)); //+ " " +
-					resultSet.getString(dogBean.getDogList().get(4)));*/
-				//System.out.println(result);
-				//System.out.println(resultSet.getString(dogBean.getDogQueue().peek()));
 				for(String element : dogBean.getDogQueue()) {
 					System.out.print(resultSet.getString(element.toString()) + " ");
 				}
@@ -142,6 +153,12 @@ public class ConnectionHandler  {
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
+		}
+		finally {
+			try { resultSet.close(); } catch (Exception e) { /* ignored */ }
+			try { preparedStmt.close(); } catch (Exception e) { /* ignored */ }
+			try { preparedStmtSelect.close(); } catch (Exception e) { /* ignored */ }
+			try { connection.close(); } catch (Exception e) { /* ignored */ }
 		}
 	}
 
@@ -156,7 +173,7 @@ public class ConnectionHandler  {
 			resultSet = preparedStmtSelect.executeQuery();
 
 			if (resultSet.last()) {
-	
+
 				for(String element : dogKeeperBean.getDogKeeperQueue()) {
 					System.out.print(resultSet.getString(element.toString()) + " ");
 				}
@@ -165,6 +182,12 @@ public class ConnectionHandler  {
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
+		}
+		finally {
+			try { resultSet.close(); } catch (Exception e) { /* ignored */ }
+			try { preparedStmt.close(); } catch (Exception e) { /* ignored */ }
+			try { preparedStmtSelect.close(); } catch (Exception e) { /* ignored */ }
+			try { connection.close(); } catch (Exception e) { /* ignored */ }
 		}
 	}
 
@@ -188,7 +211,12 @@ public class ConnectionHandler  {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		finally {
+			try { resultSet.close(); } catch (Exception e) { /* ignored */ }
+			try { preparedStmt.close(); } catch (Exception e) { /* ignored */ }
+			try { preparedStmtSelect.close(); } catch (Exception e) { /* ignored */ }
+			try { connection.close(); } catch (Exception e) { /* ignored */ }
+		}
 	}
 	//End of Insert connections
 
@@ -207,6 +235,10 @@ public class ConnectionHandler  {
 		catch(SQLException e) {
 			e.printStackTrace();
 		}
+		finally {
+			try { preparedStmt.close(); } catch (Exception e) { /* ignored */ }
+			try { connection.close(); } catch (Exception e) { /* ignored */ }
+		}
 
 	}
 
@@ -221,6 +253,10 @@ public class ConnectionHandler  {
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
+		}
+		finally {
+			try { preparedStmt.close(); } catch (Exception e) { /* ignored */ }
+			try { connection.close(); } catch (Exception e) { /* ignored */ }
 		}
 
 	}
@@ -238,7 +274,10 @@ public class ConnectionHandler  {
 		catch(SQLException e) {
 			e.printStackTrace();
 		}
-
+		finally {
+			try { preparedStmt.close(); } catch (Exception e) { /* ignored */ }
+			try { connection.close(); } catch (Exception e) { /* ignored */ }
+		}
 	}
 	//End of UPDATE connections
 
@@ -254,7 +293,10 @@ public class ConnectionHandler  {
 		catch(SQLException e) {
 			e.printStackTrace();
 		}
-
+		finally {
+			try { preparedStmt.close(); } catch (Exception e) { /* ignored */ }
+			try { connection.close(); } catch (Exception e) { /* ignored */ }
+		}
 	}
 
 	public void deleteNewOwnerAndDog(){
@@ -268,7 +310,10 @@ public class ConnectionHandler  {
 		catch(SQLException e) {
 			e.printStackTrace();
 		}
-
+		finally {
+			try { preparedStmt.close(); } catch (Exception e) { /* ignored */ }
+			try { connection.close(); } catch (Exception e) { /* ignored */ }
+		}
 	}
 	//End of DELETE connections
 
@@ -286,7 +331,10 @@ public class ConnectionHandler  {
 		catch(SQLException e) {
 			e.printStackTrace();
 		}
-
+		finally {
+			try { callableStatement.close(); } catch (Exception e) { /* ignored */ }
+			try { connection.close(); } catch (Exception e) { /* ignored */ }
+		}
 	}
 
 	//Search connection
@@ -297,26 +345,23 @@ public class ConnectionHandler  {
 			resultSet = statement.executeQuery(queries.searchNewOwner());
 
 			if(resultSet.next()) {
-			for (int j = 0; j < 5; j++) {
-				System.out.print(resultSet.getString(newOwnerBean.getNewOwnerList().get(j)) + " ");
-			} 
-			System.out.println();
-			
+				for (int j = 0; j < 5; j++) {
+					System.out.print(resultSet.getString(newOwnerBean.getNewOwnerList().get(j)) + " ");
+				} 
+				System.out.println();
+
 			}
-			/*if(resultSet.next()) {
-				System.out.println(
-						resultSet.getString(newOwnerBean.getOwnerId()) + " " + 
-						resultSet.getString(newOwnerBean.getOwnerFirstName()) + " " +
-						resultSet.getString(newOwnerBean.getOwnerLastName()) + " " + 
-						resultSet.getString(newOwnerBean.getSocialSecurityNumber()) + " " +
-						resultSet.getString(newOwnerBean.getPhoneNumber()));
-			}*/
 			else {
 				System.out.println("Owner_id doesnt exist.");
 			}
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
+		}
+		finally {
+			try { connection.close(); } catch (Exception e) { /* ignored */ }
+			try { statement.close(); } catch (Exception e) { /* ignored */ }
+			try { connection.close(); } catch (Exception e) { /* ignored */ }
 		}
 
 	}

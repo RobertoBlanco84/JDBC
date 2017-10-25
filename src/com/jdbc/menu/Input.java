@@ -26,9 +26,10 @@ public class Input {
 			+ "\n 3.Update \n 4.Delete \n 5.Search \n 6.Dog Count \n 7.Exit \n";
 
 	public void Menu()  {
+		System.out.println(menu);
+		String option = scan.next();
 		while(isActive) {
-			System.out.println(menu);
-			String option = scan.next();
+			
 
 			//SELECT
 			if (option.equals("1")){
@@ -37,31 +38,34 @@ public class Input {
 				option = scan.next();
 				if(option.equals("1")) {
 					connectionHandler.selectDog();
-					System.out.println(menu);
-					option = scan.next();
+					/*System.out.println(menu);
+					option = scan.next();*/
 				}
 				if(option.equals("2")) {
 					connectionHandler.selectKeeper();
-					System.out.println(menu);
-					option = scan.next();
+					/*System.out.println(menu);
+					option = scan.next();*/
+					
 				}
 				if(option.equals("3")) {
 					connectionHandler.selectNewOwner();
-					System.out.println(menu);
-					option = scan.next();
+					/*System.out.println(menu);
+					option = scan.next();*/
 				}
 				if(option.equals("4")) {
 					connectionHandler.selectDeletedOwners();
-					System.out.println(menu);
-					option = scan.next();
+					/*System.out.println(menu);
+					option = scan.next();*/
 				}
 				if(option.equals("5")) {
 					System.out.println(menu);
 					option = scan.next();
 
 				}
-
+			
+			
 			}
+			
 			//INSERT
 			if (option.equals("2")){
 				System.out.println("INSERT:\n 1.Dog\n 2.Dog_keeper\n 3.New_owner \n 4.Back to Menu");
@@ -150,6 +154,7 @@ public class Input {
 				}
 
 			}
+			
 			//DELETE
 			if (option.equals("4")){
 				System.out.println("DELETE FROM:\n 1.Dog_keeper\n 2.New_owner and Dog\n 3.Back to Menu");
@@ -182,7 +187,10 @@ public class Input {
 				System.out.println("Bye.");
 				System.exit(0); 
 			}
+			
+			
 		}
+
 
 	}
 
