@@ -8,22 +8,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
 import java.sql.PreparedStatement;
-
-import com.jdbc.java_bean.DeletedOwnerBean;
-import com.jdbc.java_bean.DogBean;
-import com.jdbc.java_bean.DogKeeperBean;
-import com.jdbc.java_bean.NewOwnerBean;
 import com.jdbc.menu.Input;
 import com.jdbc.queries.Queries;
 
 public class ConnectionHandler  {
 
-	private DogBean dogBean = new DogBean();
-	private DogKeeperBean dogKeeperBean = new DogKeeperBean();
-	private NewOwnerBean newOwnerBean = new NewOwnerBean();
-	private DeletedOwnerBean deletedOwnerBean = new DeletedOwnerBean();
 	private Queries queries = new Queries();
-
 	private String url = "jdbc:mysql://localhost:3306/dog_shelter";
 	private String user = "root";
 	private String password = "";
@@ -36,20 +26,14 @@ public class ConnectionHandler  {
 	ResultSet resultSet;
 
 	//ÄNDRA METOD NAMN!!!	
+
 	// SELECT connections
-	public void selectDog() {
+	public void selectDogConnection() {
 		try {
 			connection = DriverManager.getConnection(url,user,password);
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery(queries.selectDog());
-
-			while (resultSet.next()) {
-				for (int j = 0; j < 5 ; j++) {
-					System.out.print(resultSet.getString(dogBean.getDogList().get(j)) + " ");
-				} 
-				System.out.println();
-			}
-
+			ResultSetUtil.displayDogResult(resultSet);
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
@@ -61,18 +45,12 @@ public class ConnectionHandler  {
 		}
 	}
 
-	public void selectKeeper() {
+	public void selectKeeperConnection() {
 		try {
 			connection = DriverManager.getConnection(url,user,password);
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery(queries.selectKeeper());
-
-			while (resultSet.next()) {
-				for (int j = 0; j < 3 ; j++) {
-					System.out.print(resultSet.getString(dogKeeperBean.getKeeperList().get(j)) + " ");
-				} 
-				System.out.println();
-			}
+			ResultSetUtil.displayDogKeeperResult(resultSet);
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
@@ -84,18 +62,12 @@ public class ConnectionHandler  {
 		}
 	}
 
-	public void selectNewOwner(){
+	public void selectNewOwnerConnection(){
 		try {
 			connection = DriverManager.getConnection(url,user,password);
 			statement = connection.createStatement();	
 			resultSet = statement.executeQuery(queries.selectNewOwner());
-
-			while (resultSet.next()) {
-				for (int j = 0; j < 5; j++) {
-					System.out.print(resultSet.getString(newOwnerBean.getNewOwnerList().get(j)) + " ");
-				} 
-				System.out.println();
-			}
+			ResultSetUtil.displayNewOwnerResult(resultSet);
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
@@ -107,18 +79,12 @@ public class ConnectionHandler  {
 		}
 	}
 
-	public void selectDeletedOwners(){
+	public void selectDeletedOwnersConnection(){
 		try {
 			connection = DriverManager.getConnection(url,user,password);
 			statement = connection.createStatement();	
 			resultSet = statement.executeQuery(queries.selectDeletedOwners());
-
-			while (resultSet.next()) {
-				for (int j = 0; j < 6; j++) {
-					System.out.print(resultSet.getString(deletedOwnerBean.getDeletedOwnerList().get(j)) + " ");
-				} 
-				System.out.println();
-			}
+			ResultSetUtil.displayDeletedOwnerResult(resultSet);
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
@@ -132,7 +98,7 @@ public class ConnectionHandler  {
 	//End of SELECT connections
 
 	//INSERT connections
-	public void insertDog(){
+	public void insertDogConnection(){
 		try {
 			connection = DriverManager.getConnection(url,user,password);
 			preparedStmt = connection.prepareStatement(queries.insertDog());
@@ -144,12 +110,8 @@ public class ConnectionHandler  {
 			preparedStmt.executeUpdate();
 			preparedStmtSelect = connection.prepareStatement(queries.displayDogInsert());
 			resultSet = preparedStmtSelect.executeQuery();
+			ResultSetUtil.displayInsertDogResult(resultSet);
 
-			if(resultSet.last()) {
-				for(String element : dogBean.getDogQueue()) {
-					System.out.print(resultSet.getString(element.toString()) + " ");
-				}
-			}
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
@@ -162,7 +124,7 @@ public class ConnectionHandler  {
 		}
 	}
 
-	public void insertKeeper(){
+	public void insertKeeperConnection(){
 		try {
 			connection = DriverManager.getConnection(url,user,password);
 			preparedStmt = connection.prepareStatement(queries.insertKeeper());
@@ -171,14 +133,8 @@ public class ConnectionHandler  {
 			preparedStmt.executeUpdate();
 			preparedStmtSelect = connection.prepareStatement(queries.displayKeeperInsert());
 			resultSet = preparedStmtSelect.executeQuery();
+			ResultSetUtil.displayInsertKeeperResult(resultSet);
 
-			if (resultSet.last()) {
-
-				for(String element : dogKeeperBean.getDogKeeperQueue()) {
-					System.out.print(resultSet.getString(element.toString()) + " ");
-				}
-
-			}
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
@@ -191,7 +147,7 @@ public class ConnectionHandler  {
 		}
 	}
 
-	public void insertNewOwner() {
+	public void insertNewOwnerConnection() {
 		try {
 			connection = DriverManager.getConnection(url,user,password);	
 			preparedStmt = connection.prepareStatement(queries.insertNewOwner());
@@ -202,12 +158,8 @@ public class ConnectionHandler  {
 			preparedStmt.executeUpdate();
 			preparedStmtSelect = connection.prepareStatement(queries.displayNewOwner());
 			resultSet = preparedStmtSelect.executeQuery();
+			ResultSetUtil.displayInsertNewOwnerResult(resultSet);
 
-			if (resultSet.last()) {
-				for (String element : newOwnerBean.getNewOwnerQueue()) {
-					System.out.print(resultSet.getString(element.toString()) + " ");
-				}
-			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -221,7 +173,7 @@ public class ConnectionHandler  {
 	//End of Insert connections
 
 	//Update connections
-	public void updateDog(){
+	public void updateDogConnection(){
 		try {
 			connection = DriverManager.getConnection(url,user,password);
 			preparedStmt = connection.prepareStatement(queries.updateDog());
@@ -242,7 +194,7 @@ public class ConnectionHandler  {
 
 	}
 
-	public void updateKeeper() {
+	public void updateKeeperConnection() {
 		try {
 			connection = DriverManager.getConnection(url,user,password);
 			preparedStmt = connection.prepareStatement(queries.updateKeeper());
@@ -260,7 +212,7 @@ public class ConnectionHandler  {
 		}
 
 	}
-	public void updateNewOwner() {
+	public void updateNewOwnerConnection() {
 		try {
 			connection = DriverManager.getConnection(url,user,password);
 			preparedStmt = connection.prepareStatement(queries.updateNewOwner());
@@ -282,7 +234,7 @@ public class ConnectionHandler  {
 	//End of UPDATE connections
 
 	//DELETE connections
-	public void deleteKeeper(){
+	public void deleteKeeperConnection(){
 		try {
 			connection = DriverManager.getConnection(url,user,password);
 			preparedStmt = connection.prepareStatement(queries.deleteKeeper());
@@ -299,7 +251,7 @@ public class ConnectionHandler  {
 		}
 	}
 
-	public void deleteNewOwnerAndDog(){
+	public void deleteNewOwnerAndDogConnection(){
 		try {
 			connection = DriverManager.getConnection(url,user,password);
 			preparedStmt = connection.prepareStatement(queries.deleteNewOwnerAndDog());
@@ -318,7 +270,7 @@ public class ConnectionHandler  {
 	//End of DELETE connections
 
 	//Stored procedure connection
-	public void dogCount() {
+	public void dogCountConnection() {
 		try {
 			connection = DriverManager.getConnection(url,user,password);		
 			callableStatement = connection.prepareCall("{call dog_count(?,?)}");
@@ -338,22 +290,12 @@ public class ConnectionHandler  {
 	}
 
 	//Search connection
-	public void searchNewOwner(){
+	public void searchNewOwnerConnection(){
 		try {
 			connection = DriverManager.getConnection(url,user,password);
 			statement = connection.createStatement();	
 			resultSet = statement.executeQuery(queries.searchNewOwner());
-
-			if(resultSet.next()) {
-				for (int j = 0; j < 5; j++) {
-					System.out.print(resultSet.getString(newOwnerBean.getNewOwnerList().get(j)) + " ");
-				} 
-				System.out.println();
-
-			}
-			else {
-				System.out.println("Owner_id doesnt exist.");
-			}
+			ResultSetUtil.displaySearchtNewOwnerResult(resultSet);
 		}
 		catch(SQLException e) {
 			e.printStackTrace();

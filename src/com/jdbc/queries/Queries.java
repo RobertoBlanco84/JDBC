@@ -7,7 +7,7 @@ import com.jdbc.java_bean.NewOwnerBean;
 import com.jdbc.menu.Input;
 
 public class Queries {
-	
+
 	NewOwnerBean newOwnerBean = new NewOwnerBean();
 	DogBean dogBean = new DogBean();
 	DogKeeperBean dogKeeperBean = new DogKeeperBean();
@@ -87,7 +87,7 @@ public class Queries {
 
 		return updateQuery;    
 	}
-	
+
 	public String updateKeeper() {
 		String updateQuery = "Update Dog_keeper SET " + dogKeeperBean.getKeeperFirstName() + "=?, "  +
 				dogKeeperBean.getKeeperLastName() + "=? WHERE keeper_id="+Input.getId() ;
