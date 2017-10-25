@@ -1,7 +1,7 @@
 package com.jdbc.java_bean;
 /**
- * a Javabean class for the entity table "Deleted_owner",
- * containing private fields with the Dog table columns' name
+ * a Javabean class for the entity table "deleted_owner",
+ * containing private fields with the deleted_owner table columns' name
  * and getters/setter to each field
  * @author marianna
  */

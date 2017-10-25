@@ -1,8 +1,8 @@
 package com.jdbc.java_bean;
 
 /**
- *a Javabean class for the entity table "Dog",
- *containing private fields with the Dog table columns' name
+ *a Javabean class for the entity table "dog_keeper",
+ *containing private fields with the dog_keeper table columns' name
  *and getters/setter to each field
  * @author marianna
  */
@@ -19,6 +19,11 @@ public class DogKeeperBean {
 	private String keeperFirstName = "fname";
 	private String keeperLastName = "lname";
 
+	
+	/**
+	 * a list containing all "dog_keeper" table's attributes 
+	 * @return a list of row/s in "dog_keeper" table  
+	 */
 	public List<String> getKeeperList() {
 		KeeperList.add(keeperId);
 		KeeperList.add(keeperFirstName);
