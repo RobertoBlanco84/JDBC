@@ -1,5 +1,12 @@
 package com.jdbc.java_bean;
 
+/**
+ *a Javabean class for the entity table "Dog",
+ *containing private fields with the Dog table columns' name
+ *and getters/setter to each field
+ * @author marianna
+ */
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
