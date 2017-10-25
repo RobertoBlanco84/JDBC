@@ -1,8 +1,13 @@
 package com.jdbc.menu;
 
+/**
+ * Serves as Dog_shelter console menu and  holds getters for user input.
+ * @author RobertoBlanco
+ *
+ */
+
 import java.util.Scanner;
 import com.jdbc.connection.ConnectionHandler;
-
 
 public class Input {
 
@@ -18,12 +23,15 @@ public class Input {
 	private static String race;
 	private static String adoptionId;
 
-	ConnectionHandler connectionHandler = new ConnectionHandler();
-	Scanner scan = new Scanner(System.in);
-	boolean isActive = true;
-	String menu = "\n Dog_shelter Menu \n What do you want to do? \n 1.Select \n 2.Insert "
-			+ "\n 3.Update \n 4.Delete \n 5.Search \n 6.Dog Count \n 7.Exit \n";
+	private ConnectionHandler connectionHandler = new ConnectionHandler();
+	private Scanner scan = new Scanner(System.in);
+	private boolean isActive = true;
 
+	private String menu = "\n Dog_shelter Menu \n What do you want to do? \n 1.Select \n 2.Insert "
+			+ "\n 3.Update \n 4.Delete \n 5.Search \n 6.Dog Count \n 7.Exit \n";
+	/**
+	 * Shows menu and options until the loop is exited.
+	 */
 	public void Menu()  {
 		System.out.println(menu);
 		String option = scan.next();
@@ -63,7 +71,6 @@ public class Input {
 
 
 			}
-
 			//INSERT
 			if (option.equals("2")){
 				System.out.println("INSERT:\n 1.Dog\n 2.Dog_keeper\n 3.New_owner \n 4.Back to Menu");
@@ -196,6 +203,10 @@ public class Input {
 	}
 
 	// GETTERS
+	/**
+	 * A set of getters for private static fields
+	 * @return user input
+	 */
 	public static String getSurName() {
 		return surName;
 	}
