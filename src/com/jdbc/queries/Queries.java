@@ -187,7 +187,7 @@ public class Queries {
 	 * @return the String searchQuery
 	 */
 	public String searchNewOwner(String input) {
-		String searchQuery = "SELECT * FROM New_owner where owner_id = " + input;
+		String searchQuery = "SELECT * FROM New_owner where owner_id =" +input;
 		return searchQuery;
 	}
 }

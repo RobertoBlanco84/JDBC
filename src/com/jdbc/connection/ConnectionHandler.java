@@ -372,8 +372,6 @@ public class ConnectionHandler  {
 	 * Calls methods close() to close down connection
 	 */
 	public void searchNewOwnerConnection(){
-		NewOwnerBean newOwnerBean = new NewOwnerBean();
-		Input myInput = new Input();
 		String myId = "";
 		try {
 			connection = DriverManager.getConnection(url,user,password);

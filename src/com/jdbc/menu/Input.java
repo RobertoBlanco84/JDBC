@@ -25,6 +25,7 @@ public class Input {
 
 	private ConnectionHandler connectionHandler = new ConnectionHandler();
 	private Scanner scan = new Scanner(System.in);
+	private static Scanner scanId = new Scanner(System.in);
 	private boolean isActive = true;
 
 	private String menu = "\n Dog_shelter Menu \n What do you want to do? \n 1.Select \n 2.Insert "
@@ -233,9 +234,7 @@ public class Input {
 	}
 
 	public static String getId(String myId) {
-		Scanner myScan = new Scanner(System.in);
-		String myIdInput;
-		myId = myScan.next();
+		myId = scanId.next();
 		return myId;
 	}
 	
