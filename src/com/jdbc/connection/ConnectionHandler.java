@@ -15,6 +15,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
 import java.sql.PreparedStatement;
+
+import com.jdbc.java_bean.NewOwnerBean;
 import com.jdbc.menu.Input;
 import com.jdbc.queries.Queries;
 
@@ -39,7 +41,7 @@ public class ConnectionHandler  {
 	 * Catches error, if  occurs, and prints out stack trace.
 	 * Call methods close() to close down connection.
 	 */
-	public void DogConnection() {
+	public void selectDogConnection() {
 		try {
 			connection = DriverManager.getConnection(url,user,password);
 			statement = connection.createStatement();
@@ -370,10 +372,13 @@ public class ConnectionHandler  {
 	 * Calls methods close() to close down connection
 	 */
 	public void searchNewOwnerConnection(){
+		NewOwnerBean newOwnerBean = new NewOwnerBean();
+		Input myInput = new Input();
+		String myId = "";
 		try {
 			connection = DriverManager.getConnection(url,user,password);
 			statement = connection.createStatement();	
-			resultSet = statement.executeQuery(queries.searchNewOwner());
+			resultSet = statement.executeQuery(queries.searchNewOwner(Input.getId(myId)));
 			ResultSetUtil.displaySearchtNewOwnerResult(resultSet);
 		}
 		catch(SQLException e) {
@@ -382,7 +387,7 @@ public class ConnectionHandler  {
 		finally {
 			try { connection.close(); } catch (Exception e) { /* ignored */ }
 			try { statement.close(); } catch (Exception e) { /* ignored */ }
-			try { connection.close(); } catch (Exception e) { /* ignored */ }
+			try { resultSet.close(); } catch (Exception e) { /* ignored */ }
 		}
 
 	}

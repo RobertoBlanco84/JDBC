@@ -55,6 +55,10 @@ public class NewOwnerBean {
 	public String getOwnerId() {
 		return ownerId;
 	}
+	
+	public void setOwnerId(String ownerId) {
+		this.ownerId = ownerId;
+	}
 
 	public String getOwnerFirstName() {
 		return ownerFirstName;

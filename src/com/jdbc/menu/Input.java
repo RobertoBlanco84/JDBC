@@ -13,7 +13,7 @@ public class Input {
 
 	private static String surName;
 	private static String lastName;
-	private static String Id;
+	private static Input Id;
 	private static String ssNumber;
 	private static String phoneNumber;
 
@@ -43,25 +43,25 @@ public class Input {
 						+ " 5.Back to Menu");
 				option = scan.next();
 				if(option.equals("1")) {
-					connectionHandler.DogConnection();
-					/*System.out.println(menu);
-					option = scan.next();*/
+					connectionHandler.selectDogConnection();
+					System.out.println(menu);
+					option = scan.next();
 				}
 				if(option.equals("2")) {
 					connectionHandler.selectKeeperConnection();
-					/*System.out.println(menu);
-					option = scan.next();*/
+					System.out.println(menu);
+					option = scan.next();
 
 				}
 				if(option.equals("3")) {
 					connectionHandler.selectNewOwnerConnection();
-					/*System.out.println(menu);
-					option = scan.next();*/
+					System.out.println(menu);
+					option = scan.next();
 				}
 				if(option.equals("4")) {
 					connectionHandler.selectDeletedOwnersConnection();
-					/*System.out.println(menu);
-					option = scan.next();*/
+					System.out.println(menu);
+					option = scan.next();
 				}
 				if(option.equals("5")) {
 					System.out.println(menu);
@@ -77,7 +77,7 @@ public class Input {
 				option = scan.next();
 				if(option.equals("1")) {
 					System.out.print("Enter a keeper Id: ");
-					Id = scan.next();
+					//Id = scan.next();
 					System.out.print("Enter a dog name: ");
 					dogName = scan.next();
 					System.out.print("Enter a gender: ");
@@ -87,6 +87,8 @@ public class Input {
 					System.out.print("Enter a adoption id: ");
 					adoptionId = scan.next();
 					connectionHandler.insertDogConnection();
+					System.out.println(menu);
+					option = scan.next();
 				}
 				if(option.equals("2")) {
 					System.out.println("Enter a surname:");
@@ -94,6 +96,8 @@ public class Input {
 					System.out.println("Enter a lastname");
 					lastName = scan.next();
 					connectionHandler.insertKeeperConnection();
+					System.out.println(menu);
+					option = scan.next();
 				}
 				if(option.equals("3")) {
 					System.out.print("Enter a surname: ");
@@ -105,6 +109,8 @@ public class Input {
 					System.out.print("Enter a phone number: ");
 					phoneNumber = scan.next();
 					connectionHandler.insertNewOwnerConnection();
+					System.out.println(menu);
+					option = scan.next();
 
 				}
 				if(option.equals("4")) {
@@ -120,7 +126,7 @@ public class Input {
 				option = scan.next();
 				if(option.equals("1")) {
 					System.out.print("Update dog WHERE keeper: ");
-					Id = scan.next();
+					//Id = scan.next();
 					System.out.print("Enter a dog name: ");
 					dogName = scan.next();
 					System.out.print("Enter a gender: ");
@@ -130,19 +136,23 @@ public class Input {
 					System.out.print("Enter a adoption id: ");
 					adoptionId = scan.next();
 					connectionHandler.updateDogConnection();
+					System.out.println(menu);
+					option = scan.next();
 				}
 				if(option.equals("2")) {
 					System.out.println("Update keeper WHERE keeper_id: ");
-					Id = scan.next();
+					//Id = scan.next();
 					System.out.println("Update surname:");
 					surName = scan.next();
 					System.out.println("Update lastname");
 					lastName = scan.next();
 					connectionHandler.updateKeeperConnection();
+					System.out.println(menu);
+					option = scan.next();
 				}
 				if(option.equals("3")) {
 					System.out.print("Update New_owner WHERE owner_id: ");
-					Id = scan.next();
+					//Id = scan.next();
 					System.out.print("Update surname: ");
 					surName = scan.next();
 					System.out.print("Update lastname: ");
@@ -152,6 +162,8 @@ public class Input {
 					System.out.print("Update phone number: ");
 					phoneNumber = scan.next();
 					connectionHandler.updateNewOwnerConnection();
+					System.out.println(menu);
+					option = scan.next();
 				}
 				if(option.equals("4")) {
 					System.out.println(menu);
@@ -166,22 +178,28 @@ public class Input {
 				option = scan.next();
 				if(option.equals("1")) {
 					System.out.println("Enter a keeper_id");
-					Id = scan.next();
+					//Id = scan.next();
 					connectionHandler.deleteKeeperConnection();
+					System.out.println(menu);
+					option = scan.next();
 				}
 				if(option.equals("2")) {
 					System.out.println("Enter a owner_id");
-					Id = scan.next();
+					//Id = scan.next();
 					connectionHandler.deleteNewOwnerAndDogConnection();
+					System.out.println(menu);
+					option = scan.next();
 				}
 				if(option.equals("3")) {
+					System.out.println(menu);
+					option = scan.next();
 					System.out.println(menu);
 					option = scan.next();
 				}
 			}
 			if (option.equals("5")){
 				System.out.println("Search in table 'New_owner' by id: ");	
-				Id = scan.next();
+				//Id = scan.next();
 				connectionHandler.searchNewOwnerConnection();
 				System.out.println(menu);
 				option = scan.next();
@@ -214,9 +232,13 @@ public class Input {
 		return lastName;
 	}
 
-	public static String getId() {
-		return Id;
+	public static String getId(String myId) {
+		Scanner myScan = new Scanner(System.in);
+		String myIdInput;
+		myId = myScan.next();
+		return myId;
 	}
+	
 
 	public static String getDogName() {
 		return dogName;

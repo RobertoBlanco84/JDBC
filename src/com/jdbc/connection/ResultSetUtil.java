@@ -21,8 +21,6 @@ public class ResultSetUtil {
 	private static DogKeeperBean dogKeeperBean = new DogKeeperBean();
 	private static NewOwnerBean newOwnerBean = new NewOwnerBean();
 	private static DeletedOwnerBean deletedOwnerBean = new DeletedOwnerBean();
-	ResultSet resultSet;
-
 	
 	/**
 	 * Loops through the resultSet and getDogList() and then displays it in the console  
@@ -93,7 +91,7 @@ public class ResultSetUtil {
 	public static final ResultSet displayDeletedOwnerResult(ResultSet resultSet) {
 		try {
 			while (resultSet.next()) {
-				for (int j = 0; j < 5 ; j++) {
+				for (int j = 0; j < 6 ; j++) {
 					System.out.print(resultSet.getString(deletedOwnerBean.getDeletedOwnerList().get(j)) + " ");
 				}
 				System.out.println();

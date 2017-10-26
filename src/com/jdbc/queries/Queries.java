@@ -45,7 +45,7 @@ public class Queries {
 	 * @return the string selectQuery
 	 */
 	public String selectNewOwner() {
-		String selectQuery = "SELECT * FROM new_owner";
+		String selectQuery = "SELECT "+ newOwnerBean.getNewOwnerList().toString().replace("[", "").replace("]", "") +" FROM new_owner";
 		return selectQuery;
 	}
 	/**
@@ -53,7 +53,7 @@ public class Queries {
 	 * @return the string selectQuery
 	 */
 	public String selectDeletedOwners() {
-		String selectQuery = "SELECT * FROM deletedOwners";
+		String selectQuery = "SELECT "+ deletedOwnerBean.getDeletedOwnerList().toString().replace("[", "").replace("]", "") +" FROM deletedOwners";
 		return selectQuery;
 	}
 	//End of SELECT Queries
@@ -186,8 +186,13 @@ public class Queries {
 	 * Contains (select * from New_owner) query
 	 * @return the String searchQuery
 	 */
-	public String searchNewOwner() {
-		String searchQuery = "SELECT * FROM New_owner where owner_id = " +Input.getId()+"";
+	public String searchNewOwner(String input) {
+		String searchQuery = "SELECT * FROM New_owner where owner_id = " + input;
 		return searchQuery;
 	}
 }
+
+
+
+
+

@@ -20,7 +20,6 @@ public class DeletedOwnerBean {
 	private String phoneNumber = "phone_number";
 	private String dateTime = "date_time";
 
-	
 	/**
 	 * a list containing all "deleted_owner" table's attributes 
 	 * @return a list of row/s in "deleted_owners" table  
