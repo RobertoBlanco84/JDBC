@@ -142,9 +142,9 @@ public class Queries {
 	 * Contains (update Dog_keeper) query
 	 * @return the String updateQuery
 	 */
-	public String updateKeeper() {
+	public String updateKeeper(String input) {
 		String updateQuery = "Update Dog_keeper SET " + dogKeeperBean.getKeeperFirstName() + "=?, "  +
-				dogKeeperBean.getKeeperLastName() + "=? WHERE keeper_id="+Input.getId() ;
+				dogKeeperBean.getKeeperLastName() + "=? WHERE keeper_id="+input ;
 		return updateQuery;    
 	}
 	
@@ -156,7 +156,7 @@ public class Queries {
 		String updateQuery = "UPDATE New_owner SET " + newOwnerBean.getOwnerFirstName() + "=?, " +
 				newOwnerBean.getOwnerLastName() + "=?, " +
 				newOwnerBean.getSocialSecurityNumber() + "=?, " +
-				newOwnerBean.getPhoneNumber() + "=? WHERE owner_id =" +Input.getId();
+				newOwnerBean.getPhoneNumber() + "=? WHERE owner_id =" + Input.getId();
 		return updateQuery;    
 	}
 	//End of UPDATE queries
@@ -166,7 +166,7 @@ public class Queries {
 	 * Contains (delete from Dog_keeper) query
 	 * @return the String deleteQuery
 	 */
-	public String deleteKeeper() {
+	public String deleteKeeper(String input) {
 		String deleteQuery = "DELETE FROM Dog_keeper WHERE "+ dogKeeperBean.getKeeperId()  +" = ?";
 		return deleteQuery;    
 	}
@@ -175,7 +175,7 @@ public class Queries {
 	 * Contains (delete from NewOwnerAndDog) query
 	 * @return the String deleteQuery
 	 */
-	public String deleteNewOwnerAndDog() {
+	public String deleteNewOwnerAndDog(String input) {
 		String deleteQuery = "DELETE FROM New_owner WHERE "+ newOwnerBean.getOwnerId()  +" = ?";
 		return deleteQuery;    
 	}

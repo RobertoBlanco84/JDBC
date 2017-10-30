@@ -252,9 +252,9 @@ public class ConnectionHandler  {
 	public void updateKeeperConnection() {
 		try {
 			connection = DriverManager.getConnection(url,user,password);
-			preparedStmt = connection.prepareStatement(queries.updateKeeper());
-			preparedStmt.setString(1, Input.getSurName());
-			preparedStmt.setString(2, Input.getLastName());
+			preparedStmt = connection.prepareStatement(queries.updateKeeper(Input.getId("")));
+			preparedStmt.setString(1, Input.getSurName(""));
+			preparedStmt.setString(2, Input.getLastName(""));
 			int rows = preparedStmt.executeUpdate();
 			System.out.println(rows + " row(s) updated.");
 		}
@@ -276,7 +276,8 @@ public class ConnectionHandler  {
 	public void updateNewOwnerConnection() {
 		try {
 			connection = DriverManager.getConnection(url,user,password);
-			preparedStmt = connection.prepareStatement(queries.updateNewOwner());
+			preparedStmt = connection.prepareStatement(queries.updateNewOwner(""));
+			//preparedStmt.setString(1, Input.getId(""));
 			preparedStmt.setString(1, Input.getSurName());
 			preparedStmt.setString(2, Input.getLastName());
 			preparedStmt.setString(3, Input.getSSNumber());
@@ -303,8 +304,8 @@ public class ConnectionHandler  {
 	public void deleteKeeperConnection(){
 		try {
 			connection = DriverManager.getConnection(url,user,password);
-			preparedStmt = connection.prepareStatement(queries.deleteKeeper());
-			preparedStmt.setString(1, Input.getId());
+			preparedStmt = connection.prepareStatement(queries.deleteKeeper(""));
+			preparedStmt.setString(1, Input.getId(""));
 			int rows = preparedStmt.executeUpdate();
 			System.out.println(rows+" row(s) deleted.");
 		}
@@ -325,8 +326,8 @@ public class ConnectionHandler  {
 	public void deleteNewOwnerAndDogConnection(){
 		try {
 			connection = DriverManager.getConnection(url,user,password);
-			preparedStmt = connection.prepareStatement(queries.deleteNewOwnerAndDog());
-			preparedStmt.setString(1, Input.getId());
+			preparedStmt = connection.prepareStatement(queries.deleteNewOwnerAndDog(""));
+			preparedStmt.setString(1, Input.getId(""));
 			int rows = preparedStmt.executeUpdate();
 			System.out.println(rows+" row(s) deleted.");
 		}
@@ -372,11 +373,10 @@ public class ConnectionHandler  {
 	 * Calls methods close() to close down connection
 	 */
 	public void searchNewOwnerConnection(){
-		String myId = "";
 		try {
 			connection = DriverManager.getConnection(url,user,password);
 			statement = connection.createStatement();	
-			resultSet = statement.executeQuery(queries.searchNewOwner(Input.getId(myId)));
+			resultSet = statement.executeQuery(queries.searchNewOwner(Input.getId("")));
 			ResultSetUtil.displaySearchtNewOwnerResult(resultSet);
 		}
 		catch(SQLException e) {

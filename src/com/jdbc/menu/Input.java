@@ -141,12 +141,12 @@ public class Input {
 					option = scan.next();
 				}
 				if(option.equals("2")) {
-					System.out.println("Update keeper WHERE keeper_id: ");
+					//System.out.println("Update keeper WHERE keeper_id: ");
 					//Id = scan.next();
-					System.out.println("Update surname:");
-					surName = scan.next();
-					System.out.println("Update lastname");
-					lastName = scan.next();
+					//System.out.println("Update surname:");
+					//surName = scan.next();
+					//System.out.println("Update lastname");
+					//lastName = scan.next();
 					connectionHandler.updateKeeperConnection();
 					System.out.println(menu);
 					option = scan.next();
@@ -226,14 +226,19 @@ public class Input {
 	 * A set of getters for private static fields
 	 * @return user input
 	 */
-	public static String getSurName() {
+	public static String getSurName(String surName) {
+		System.out.println("Update first name: ");
+		surName = scanId.next();
 		return surName;
 	}
-	public static String getLastName() {
+	public static String getLastName(String lastName) {
+		System.out.println("Update last name: ");
+		lastName = scanId.next();
 		return lastName;
 	}
 
 	public static String getId(String myId) {
+		System.out.println("Update keeper WHERE keeper_id: ");
 		myId = scanId.next();
 		return myId;
 	}
