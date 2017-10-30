@@ -252,9 +252,9 @@ public class ConnectionHandler  {
 	public void updateKeeperConnection() {
 		try {
 			connection = DriverManager.getConnection(url,user,password);
-			preparedStmt = connection.prepareStatement(queries.updateKeeper(Input.getId("")));
-			preparedStmt.setString(1, Input.getSurName(""));
-			preparedStmt.setString(2, Input.getLastName(""));
+			preparedStmt = connection.prepareStatement(queries.updateKeeper(Input.setId(Input.getId())));
+			preparedStmt.setString(1, Input.setSurName(Input.getSurName()));
+			preparedStmt.setString(2, Input.setLastName(Input.getLastName()));
 			int rows = preparedStmt.executeUpdate();
 			System.out.println(rows + " row(s) updated.");
 		}

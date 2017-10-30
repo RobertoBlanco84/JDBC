@@ -13,7 +13,7 @@ public class Input {
 
 	private static String surName;
 	private static String lastName;
-	private static Input Id;
+	private static String Id;
 	private static String ssNumber;
 	private static String phoneNumber;
 
@@ -226,24 +226,36 @@ public class Input {
 	 * A set of getters for private static fields
 	 * @return user input
 	 */
-	public static String getSurName(String surName) {
+	public static String setSurName(String surName) {
 		System.out.println("Update first name: ");
 		surName = scanId.next();
 		return surName;
 	}
-	public static String getLastName(String lastName) {
-		System.out.println("Update last name: ");
-		lastName = scanId.next();
-		return lastName;
+	
+	public static String setLastName(String surName) {
+		System.out.println("Update first name: ");
+		surName = scanId.next();
+		return surName;
 	}
-
-	public static String getId(String myId) {
+	
+	public static String setId(String myId) {
 		System.out.println("Update keeper WHERE keeper_id: ");
 		myId = scanId.next();
 		return myId;
 	}
 	
+	public static String getSurName() {
+		return surName;
+	}
+	
+	public static String getLastName() {		
+		return lastName;
+	}
 
+	public static String getId() {
+		return Id;
+	}
+	
 	public static String getDogName() {
 		return dogName;
 	}
