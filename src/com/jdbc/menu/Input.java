@@ -244,6 +244,21 @@ public class Input {
 		return myId;
 	}
 	
+	public static String setSearchId(String myId) {
+		myId = scanId.next();
+		return myId;
+	}
+	
+	public static String setNewOwnerId(String newOwnerId) {
+		newOwnerId = scanId.next();
+		return newOwnerId;
+	}
+	
+	public static String setKeeperId(String keeperId) {
+		keeperId = scanId.next();
+		return keeperId;
+	}
+	
 	public static String getSurName() {
 		return surName;
 	}

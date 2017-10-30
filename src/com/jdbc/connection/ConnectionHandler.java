@@ -304,8 +304,8 @@ public class ConnectionHandler  {
 	public void deleteKeeperConnection(){
 		try {
 			connection = DriverManager.getConnection(url,user,password);
-			preparedStmt = connection.prepareStatement(queries.deleteKeeper(""));
-			preparedStmt.setString(1, Input.getId(""));
+			preparedStmt = connection.prepareStatement(queries.deleteKeeper(Input.getId()));
+			preparedStmt.setString(1, Input.setKeeperId(Input.getId()));
 			int rows = preparedStmt.executeUpdate();
 			System.out.println(rows+" row(s) deleted.");
 		}
@@ -326,8 +326,8 @@ public class ConnectionHandler  {
 	public void deleteNewOwnerAndDogConnection(){
 		try {
 			connection = DriverManager.getConnection(url,user,password);
-			preparedStmt = connection.prepareStatement(queries.deleteNewOwnerAndDog(""));
-			preparedStmt.setString(1, Input.getId(""));
+			preparedStmt = connection.prepareStatement(queries.deleteNewOwnerAndDog(Input.getId()));
+			preparedStmt.setString(1, Input.setNewOwnerId(Input.getId()));
 			int rows = preparedStmt.executeUpdate();
 			System.out.println(rows+" row(s) deleted.");
 		}
@@ -376,7 +376,7 @@ public class ConnectionHandler  {
 		try {
 			connection = DriverManager.getConnection(url,user,password);
 			statement = connection.createStatement();	
-			resultSet = statement.executeQuery(queries.searchNewOwner(Input.getId("")));
+			resultSet = statement.executeQuery(queries.searchNewOwner(Input.setSearchId(Input.getId())));
 			ResultSetUtil.displaySearchtNewOwnerResult(resultSet);
 		}
 		catch(SQLException e) {
