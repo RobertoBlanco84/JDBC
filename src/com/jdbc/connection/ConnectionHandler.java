@@ -16,7 +16,6 @@ import java.sql.Statement;
 import java.sql.Types;
 import java.sql.PreparedStatement;
 
-import com.jdbc.java_bean.NewOwnerBean;
 import com.jdbc.menu.Input;
 import com.jdbc.queries.Queries;
 
@@ -276,8 +275,7 @@ public class ConnectionHandler  {
 	public void updateNewOwnerConnection() {
 		try {
 			connection = DriverManager.getConnection(url,user,password);
-			preparedStmt = connection.prepareStatement(queries.updateNewOwner(""));
-			//preparedStmt.setString(1, Input.getId(""));
+			preparedStmt = connection.prepareStatement(queries.updateNewOwner());
 			preparedStmt.setString(1, Input.getSurName());
 			preparedStmt.setString(2, Input.getLastName());
 			preparedStmt.setString(3, Input.getSSNumber());

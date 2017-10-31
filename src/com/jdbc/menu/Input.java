@@ -78,7 +78,7 @@ public class Input {
 				option = scan.next();
 				if(option.equals("1")) {
 					System.out.print("Enter a keeper Id: ");
-					//Id = scan.next();
+					Id = scan.next();
 					System.out.print("Enter a dog name: ");
 					dogName = scan.next();
 					System.out.print("Enter a gender: ");
@@ -179,14 +179,12 @@ public class Input {
 				option = scan.next();
 				if(option.equals("1")) {
 					System.out.println("Enter a keeper_id");
-					//Id = scan.next();
 					connectionHandler.deleteKeeperConnection();
 					System.out.println(menu);
 					option = scan.next();
 				}
 				if(option.equals("2")) {
 					System.out.println("Enter a owner_id");
-					//Id = scan.next();
 					connectionHandler.deleteNewOwnerAndDogConnection();
 					System.out.println(menu);
 					option = scan.next();
@@ -200,7 +198,6 @@ public class Input {
 			}
 			if (option.equals("5")){
 				System.out.println("Search in table 'New_owner' by id: ");	
-				//Id = scan.next();
 				connectionHandler.searchNewOwnerConnection();
 				System.out.println(menu);
 				option = scan.next();
@@ -226,6 +223,10 @@ public class Input {
 	 * A set of getters for private static fields
 	 * @return user input
 	 */
+	/*public static String setScanner(Scanner scanner) {
+		String input = scanner.nextLine();
+		return input;
+	}*/	
 	public static String setSurName(String surName) {
 		System.out.println("Update first name: ");
 		surName = scanId.next();
